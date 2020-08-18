@@ -1,0 +1,25 @@
+\newpage
+\section{Teilversuch 2: Drehmoment des Feldes auf eine stromdurchflossene Spule}
+	Fehler bei der Winkelmessung $\Delta \alpha = \SI{2}{\degree}$ \\
+	Fehler bei der Winkelmessung $\Delta \beta = \SI{1.0}{\degree}$
+ 	\begin{equation*}
+ 		\begin{tabu}{l *{10}{l}}
+ 			\toprule
+ 			\alpha / \si{\degree} & 0 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 \\
+ 			\midrule
+			\beta/ \si{\degree} & 295,0 & 315,0 & 337,0 & 358,5 & 377,0 & 395,0 & 413,0 & 425,5 & 437,5 & 449,0 \\
+			(\beta - \beta_0)/ \si{\degree} & 0,0 & 20,0 & 42,0 & 63,5 & 82,0 & 100,0 & 118,0 & 130,5 & 142,5 & 154,0 \\
+			\varphi / \si{\degree} & 0,0 & -10,0 & -22,0 & -33,5 & -42,0 & -50,0 & -58,0 & -60,5 & -62,5 & -64,0 \\
+			\bottomrule
+ 		\end{tabu}
+ 	\end{equation*}
+	wobei $\varphi = \alpha - (\beta - \beta_0)$.
+
+	$\varphi$ wurde dann gegen $\sin (\alpha/\si{\degree})$ im \gnuplot{} geplottet und eine Kurveanpassung zur $\varphi = m\sin \alpha + c$ durchgeführt. 
+	\begin{figure}[H]
+		\centering
+		\input{./plots/tv1-plot.tex}
+		\caption{\centering Drehmoment auf stromdurchflossene Spule \captionbr $\chi^2_{\text{red}} = \num{0.0525026} \implies$ Gute Anpassung}
+		\label{fig:tvone-plot}
+		\vspace{-1em}
+	\end{figure}

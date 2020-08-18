@@ -26,7 +26,7 @@
 \usepackage{footmisc}
 \usepackage[separate-uncertainty=true]{siunitx}
 \sisetup{locale = DE}
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 
 \usepackage{csquotes}
 \MakeOuterQuote{"}
@@ -58,8 +58,8 @@
 	pdfstartview=Fit,
 	pdfpagemode=UseOutlines,
 	colorlinks=true,
-	linkcolor=black,
-	filecolor=magenta,      
+	linkcolor=MidnightBlue,
+	filecolor=magenta, 
 	urlcolor=blue
 }
 \urlstyle{same}
@@ -129,6 +129,23 @@
                     \@tempswatrue%
                 \fi%
                 \left(\Delta\factor\right)^2%
+            }%
+        }
+    }
+\makeatother
+
+% Add quad
+\makeatletter
+    \newcommand{\addquadpure}[1]{% \gausserror{G}{faktoren}
+        \sqrt{%
+            \@tempswafalse
+            \@for\factor:=#1
+            \do{
+                \if@tempswa+%
+                \else%
+                    \@tempswatrue%
+                \fi%
+                \left(\factor\right)^2%
             }%
         }
     }

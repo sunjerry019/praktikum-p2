@@ -1,9 +1,8 @@
-\newpage
 \section{Teilversuch 2: Drehmoment des Feldes auf eine stromdurchflossene Spule}
 	Fehler bei der Winkelmessung $\Delta \alpha = \SI{2}{\degree}$ \\
 	Fehler bei der Winkelmessung $\Delta \beta = \SI{1.0}{\degree}$
  	\begin{equation*}
- 		\begin{tabu}{l *{10}{l}}
+ 		\begin{tabu}{l *{10}{r}}
  			\toprule
  			\alpha / \si{\degree} & 0 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 \\
  			\midrule
@@ -15,11 +14,33 @@
  	\end{equation*}
 	wobei $\varphi = \alpha - (\beta - \beta_0)$.
 
-	$\varphi$ wurde dann gegen $\sin (\alpha/\si{\degree})$ im \gnuplot{} geplottet und eine Kurveanpassung zur $\varphi = m\sin \alpha + c$ durchgeführt. 
+	Die entsprechende Fehler zur $\sin (\alpha/\si{\degree})$ und $\varphi$ sind wie folgt gegeben:
+	\begin{align}
+		\Delta \sin (\alpha/\si{\degree}) &= \abs{\cos(\alpha/\si{\degree})}\cdot \frac{\Delta \alpha}{\SI{180}{\degree}} \cdot \pi \\
+		\Delta \varphi &= \addquad{\alpha, \beta, \beta_0} = \addquadpure{\SI{2}{\degree}, \SI{1.0}{\degree},\SI{1.0}{\degree}} = \SI{2.5}{\degree}
+	\end{align}
+
+	$\varphi$ wurde dann gegen $\sin (\alpha/\si{\degree})$ im \gnuplot{} geplottet und eine Kurveanpassung zur $\varphi = m\sin \alpha + c$ durchgeführt. Die entsprechende Fehler sind direkt im \gnuplot{} berechnet. Siehe Appendix \ref{appdx:gnuplottv2} für die genauer Rechnung.
+
+	Im Experiment war die Markierung für Winkel $\alpha$ wegen des Aufbaus schwer abzulesen. Somit ist der Fehler eher groß und sind hier bei der Kurvenanpassung nicht vernachlässigt.
 	\begin{figure}[H]
 		\centering
-		\input{./plots/tv1-plot.tex}
-		\caption{\centering Drehmoment auf stromdurchflossene Spule \captionbr $\chi^2_{\text{red}} = \num{0.0525026} \implies$ Gute Anpassung}
-		\label{fig:tvone-plot}
+		\input{./plots/tv2-plot.tex}
+		\caption{\centering Drehmoment auf stromdurchflossene Spule \captionbr $\chi^2_{\text{red}} = \num{0.163741} \implies$ Gute Anpassung}
+		\label{fig:tvtwo-plot}
 		\vspace{-1em}
 	\end{figure}
+	Als Endergebnis erhalten wir:
+	\begin{equation*}
+		\begin{tabu}{lll}
+			\toprule
+			\text{Variable} & \text{Wert} & \text{Gerundet} \\
+			\midrule
+			m & \SI{-64.519(1445)}{\degree} & \SI{-64.5(15)}{\degree}\\
+			c & \SI{-0.140(1145)}{\degree} & \SI{-0.1(12)}{\degree} \\
+			\bottomrule
+		\end{tabu}
+	\end{equation*}
+	$c$ ist der Abszissenabschnitt und $0$ liegt tatsächlich im Fehlerintervall von $c$, also liegen die Messpunkte im Rahmen der Fehlergrenzen auf einer durch den Nullpunkt gehenden Geraden.
+
+	Aus der gute Kurvenanpassung folgt also, dass die Messergebnisse mit der Theorie übereinstimmt. 

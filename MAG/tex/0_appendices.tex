@@ -1,2 +1,73 @@
-\section{\gnuplot{} Quellcode zur Auswertung von Teilversuch 1}
-    
+\section{\gnuplot{} Quellcode zur Auswertung von Teilversuch 2}
+    \label{appdx:gnuplottv2}
+    {  
+        % % Surpress "errors" in minted
+        % https://tex.stackexchange.com/a/289068
+        \renewcommand{\fcolorbox}[4][]{#4}
+        \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{gnuplot}
+#!/usr/bin/env gnuplot
+
+set term epslatex color size 6in, 4in
+set output "tv2-plot.tex"
+set decimalsign locale 'de_DE.UTF-8'
+
+set title "Torsionswinkel $\\phi$ gegen $\\sin(\\alpha/\\si{\\degree})$"
+set ylabel "Torsionswinkel $\\phi$ ($\\si{\\degree}$)"
+set xlabel "$\\sin(\\alpha/\\si{\\degree})$"
+
+set mxtics
+set mytics
+set samples 10000
+
+set xrange[0.1:1.05]
+
+f(x) = m*x + c
+
+# (x, y, xdelta, ydelta)
+fit f(x) "tv2.dat" u (sin((($1)/180)*pi)):2:(cos((($1)/180)*pi)*2*(pi/180)):(2.5) xyerrors via m,c
+
+# Linien
+set key top right spacing 1.3
+
+titel = "$".gprintf("%.5f", m)."I + ".gprintf("%.5f", c)."$"
+plot f(x) title titel lc rgb 'dark-magenta', \
+    "tv2.dat" u (sin((($1)/180)*pi)):2:(cos((($1)/180)*pi)*2*(pi/180)):(2.5) with xyerrorbars title "Messpunkte" pointtype 0 lc rgb 'dark-goldenrod'
+        \end{minted}
+    }
+    mit \texttt{tv1.dat}:
+    \begin{multicols}{2}
+        \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{text}
+#alpha  phi
+# 0     0,0
+10      -10,0
+20      -22,0
+30      -33,5
+40      -42,0
+50      -50,0
+60      -58,0
+70      -60,5
+80      -62,5
+90      -64,0
+        \end{minted}
+    \end{multicols}
+    \vspace{-\baselineskip}
+    Rohausgabe:
+    \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{text}
+final sum of squares of residuals : 1.14619
+rel. change during last iteration : -5.81173e-16
+
+degrees of freedom    (FIT_NDF)                        : 7
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.404649
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.163741
+p-value of the Chisq distribution (FIT_P)              : 0.992114
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+m               = -64.5185         +/- 1.445        (2.24%)
+c               = -0.140149        +/- 1.145        (816.9%)
+
+correlation matrix of the fit parameters:
+                m      c      
+m               1.000 
+c              -0.942  1.000
+    \end{minted}

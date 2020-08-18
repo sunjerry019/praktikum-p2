@@ -1,0 +1,147 @@
+\section{Teilversuch 1: Bestimmung der spezifischen Wärmekapazität von Wasser}
+	\subsection{Wasserwert des Kalorimeters}
+	  	Als Messungen haben wir:
+	  	\begin{equation*}
+	  		\begin{tabu}{lll}
+	  			\text{Temperaturen} && \\
+	  			\toprule
+	  			\text{Kalt } & (\theta_1) & \SI{24.0(1)}{\celsius} \\
+	  			\text{Warm } & (\theta_2) & \SI{74.2(1)}{\celsius} \\
+	  			\text{Mischung } & (\theta_m) & \SI{36.5(1)}{\celsius} \\
+	  			\bottomrule
+	  		\end{tabu}
+	  	\end{equation*}
+	  	\begin{equation*}
+	  		\begin{tabu}{lll|l}
+	  			\text{Gewichten} \\
+	  			\toprule
+	  			& M_{0}/\si{\gram} & M_1/\si{\gram} & M_i/\si{\gram}\\
+	  			\midrule
+	  			\text{Kalt }(M_k) & \num{908.60(13)} & \num{306.92(3)} & \num{601.68(14)}\\
+	  			\text{Warm }(M_w) & \num{509.03(3)} & \num{294.31(3)}  & \num{214.72(4)}\\
+	  			\bottomrule
+	  		\end{tabu}
+	  	\end{equation*}
+	  	wobei $M_0$ das Gewicht der Wasser plus Gefäß und $M_1$ das Gewicht der Gefäß mit ggf. übriges Wasser ist. Die jeweiligen Massen von Wasser $M_i$ sind gegeben durch $M_i = M_1 - M_0$, mit dem entsprechenden Fehler:
+	  	\begin{align}
+	  		\Delta M_i = \sqrt{(\Delta M_0)^2 + (\Delta M_1)^2}
+	  	\end{align}
+	  	Aus der Anleitung ist der Wasserwert des Kalorimeters gegeben durch:
+	  	\begin{equation}
+	  		m_w^* = \frac{M_w(\theta_2 - \theta_m)}{(\theta_m - \theta_1)} - M_k
+	  	\end{equation}
+	  	und der Fehler:
+	  	\begin{align}
+	  		\Delta (\theta_2 - \theta_m) &= \addquad{\theta_1, \theta_m} = \sqrt{2} \Delta\theta = \Delta (\theta_m - \theta_1)\\\
+	  		(\Delta m_w^*)^2 &=  \left(\frac{M_w(\theta_2 - \theta_m)}{(\theta_m - \theta_1)} 
+	  		\relquad{(\theta_2 - \theta_m), (\theta_m - \theta_1), M_w}\right)^2 \notag \\
+	  		&\phantom{=}+ \left(\Delta M_k\right)^2 \\
+	  		&= \left(\frac{M_w(\theta_2 - \theta_m)}{(\theta_m - \theta_1)}\sqrt{2(\Delta\theta)^2\left(\frac{1}{(\theta_2 - \theta_m)^2} + \frac{1}{(\theta_m - \theta_1)^2}\right) + \left(\frac{\Delta M_w}{M_w}\right)^2}\right)^2 \notag \\
+	  		&\phantom{=}+ \left(\Delta M_k\right)^2 \\
+	  		&= \left(\frac{M_w(\theta_2 - \theta_m)}{(\theta_m - \theta_1)}\right)^2\cdot\left({2(\Delta\theta)^2\left(\frac{1}{(\theta_2 - \theta_m)^2} + \frac{1}{(\theta_m - \theta_1)^2}\right) + \left(\frac{\Delta M_w}{M_w}\right)^2}\right) \notag \\
+	  		&\phantom{=}+ \left(\Delta M_k\right)^2 
+	  	\end{align}
+	  	Wir substituieren die Werten:
+	  	\begin{align*}
+	  		m_w^* &= \frac{(\SI{214.72}{\gram})(\SI{74.2}{\celsius} - \SI{36.5}{\celsius})}{(\SI{36.5}{\celsius} - \SI{24.0}{\celsius})} - \SI{601.68}{\gram} \\
+	  		&= \frac{(\SI{214.72}{\gram})(\SI{37.7}{\celsius})}{(\SI{12.5}{\celsius})} - \SI{601.68}{\gram}\\
+	  		&= \SI{647.59552}{\gram} - \SI{601.68}{\gram}\\
+	  		&= \SI{45.91552}{\gram}\\
+	  		(\Delta m_w^*)^2 &= \left(\SI{647.59552}{\gram}\right)^2\cdot\left({2(\SI{0.1}{\celsius})^2\left(\frac{1}{(\SI{37.7}{\celsius})^2} + \frac{1}{(\SI{12.5}{\celsius})^2}\right) + \left(\frac{\SI{0.04}{\gram}}{\SI{214.72}{\gram}}\right)^2}\right) \notag \\
+	  		&\phantom{=}+ \left(\SI{0.14}{\gram}\right)^2  \\
+	  		\Delta m_w^* &= \SI{29.8919}{\gram} \sigfig{6}
+	  	\end{align*}
+	  	Somit ist $m_w^* = \SI{50(30)}{\gram}$. Der im Kapitel 1.4 gegebene Literaturwert $m_w^* = \SI{80}{\gram}$ liegt im Fehlerintervall des experimental bestimmten Wert, also stimmt die beide Werten miteinander überein. Es ist hier zu bemerken, dass der experimental bestimmte Wert eine sehr große Unsicherheit hat. 
+
+	  	%Der experimental bestimmte Wert hat aber eine sehr große Unsicherheit, also benutzen wir den Literaturwert für alle andere Berechnungen.
+
+	\newpage
+	\subsection{Spezifische Wärmekapazität von Wasser}
+		Fehler bei Messung der Zeit $\Delta t = \SI{0.2}{\second}$ \\
+		Fehler bei Messung der Temperatur $\Delta x = \SI{0.3}{\celsius}$ 
+		\begin{equation*}
+			\begin{tabu}{l *{8}{l}}
+				\multicolumn{9}{l}{\text{Messreihe}} \\
+				\toprule
+				t/\si{\minute} & 0 & 60 & 120 & 180 & 240 & 300 & 360 & 420 \\
+				\midrule
+				\theta/\si{\celsius} & 25,6 & 26,5 & 26,7 & 27,0 & 27,6 & 28,1 & 28,6 & 29,1  \\
+				\bottomrule
+				\toprule
+				t/\si{\minute} & 480 & 540 & 600 & 660 & 720 & 780 & 840 & 900 \\
+				\midrule
+				\theta/\si{\celsius} & 29,5 & 30,2 & 30,8 & 31,2 & 31,6 & 32,0 & 32,9 & 33,1 \\
+				\bottomrule
+			\end{tabu}
+		\end{equation*}
+		Die Daten wurden dann mit \gnuplot{} geplottet und es wurde eine Kurvenanpassung zur $\theta = bt + c$ durchgeführt.
+		\begin{figure}[H]
+			\centering
+			\input{tv1-plot.tex}
+			\caption{\centering Temperaturverlauf bei der Erwärmung von Wasser im Kalorimeter \captionbr $\chi^2_{\text{red}} = \num{0.237306} \implies$ Gute Anpassung}
+			\label{fig:tvone-plot}
+			\vspace{-1em}
+		\end{figure}
+		Als Endergebnis erhalten wir:
+		\begin{equation*}
+			\begin{tabu}{ll}
+				\toprule
+				b & \SI{8.3162(1321)e-3}{\celsius\per\second} \\
+				c & \SI{25.664(70)}{\celsius} \\
+				\bottomrule
+			\end{tabu}
+		\end{equation*}
+		Gerundet haben wir $b = \SI{8.32(14)e-3}{\kelvin\per\second}$, da eine $\SI{1}{\kelvin}$ Änderung die gleiche wie eine $\SI{1}{\celsius}$ Änderung ist. 
+
+		Aus der Anleitung gilt:
+		\begin{align}
+			Q = mC_S \Delta \theta && \Leftrightarrow && IV\Delta t = mC_S \Delta \theta && \Leftrightarrow && \frac{\Delta \theta}{\Delta t} = \frac{IV}{mC_S} 
+		\end{align}
+		Also ist die Steigung $\displaystyle b = \frac{IV}{mC_S}$ und es gilt:
+		\begin{align}
+			C_S = \frac{IV}{mb} = \frac{IV}{(m_w + m_w^*)\,b} = \frac{IV}{((m_\text{w+g} - m_\text{g}) + m_w^*)\,b}
+		\end{align}
+		Da wir nur die Unsicherheiten der Geradensteigung und die Unsicherheit des Wasserwertes berücksichtigen müssen, vernachlässigen wir die Unsicherheiten bei $m_\text{w+g}$, $m_\text{g}$, $I$ und $V$. Der Fehler ist somit gegeben durch:
+		\begin{align*}
+			C_S = \gausserror{C_S}{m_w^*,b}
+		\end{align*}
+		mit
+		\begin{align*}
+			\pdv{C_S}{m_w^*} = - \frac{IV}{b\,(m_\text{w+g} - m_\text{g} + m_w^*)^2} && \pdv{C_S}{b} = - \frac{IV}{b^2\,(m_\text{w+g} - m_\text{g} + m_w^*)}
+		\end{align*}
+		Es gilt somit:
+		\begin{align*}
+			\Delta C_S = \sqrt{\left(\frac{IV \Delta m_w^*}{b\,(m_\text{w+g} - m_\text{g} + m_w^*)^2}\right)^2 + \left(\frac{IV \Delta b}{b^2\,(m_\text{w+g} - m_\text{g} + m_w^*)}\right)^2} 
+		\end{align*}
+		Wir haben als Messwerten:
+		\begin{equation*}
+			\begin{tabu}{lll}
+				\toprule
+				\text{Variable} & \text{Wert} & \text{Bedeutung}\\
+				\midrule 
+				V & \SI{21.50(21)}{\volt} & \text{Spannung am Heizungselement}\\
+				I & \SI{1.6(6)}{\ampere} & \text{Strom am Heizungselement}\\
+				m_\text{w+g} & \SI{903.20(13)}{\gram} & \text{Masse der Wasser und Gefäß} \\
+				m_\text{g} & \SI{306.83(3)}{\gram} & \text{Masse des leeren Gefäß} \\
+				m_w^* & \SI{50(30)}{\gram} & \text{Wasserwert des Kalorimeters} \\
+				b & \SI{8.32(14)e-3}{\kelvin\per\second} & \text{Erhaltene Steigung} \\
+				\bottomrule
+			\end{tabu}
+		\end{equation*}
+		Damit:
+		\begin{align*}
+			C_S &= \frac{(\SI{1.6}{\ampere})(\SI{21.50}{\volt})}{(\SI{903.20}{\gram} - \SI{306.83}{\gram} + \SI{50}{\gram})\,(\SI{8.32e-3}{\kelvin\per\second})} \\
+			&= \SI{6.39667}{\joule\per\gram\per\kelvin} \\
+			\Delta C_S^2 &= \left(\frac{(\SI{1.6}{\ampere})(\SI{21.50}{\volt}) (\SI{30}{\gram})}{(\SI{8.32e-3}{\kelvin\per\second})\,(\SI{903.20}{\gram} - \SI{306.83}{\gram} + \SI{50}{\gram})^2}\right)^2 \\
+			&\phantom{=}+ \left(\frac{(\SI{1.6}{\ampere})(\SI{21.50}{\volt})(\SI{0.14e-3}{\kelvin\per\second})}{(\SI{8.32e-3}{\kelvin\per\second})^2\,(\SI{903.20}{\gram} - \SI{306.83}{\gram} + \SI{50}{\gram})}\right)^2 \\
+		\Delta C_S &= \SI{0.316471}{\joule\per\gram\per\kelvin}
+		\end{align*}
+		Somit erhalten wir $C_S = \SI{6.4(4)}{\joule\per\gram\per\kelvin}$.
+
+		Für den Literaturwert benutzen wir den Mittelwert von den Temperaturen und verwenden die Wärme\-kapazität bei diesem Temperatur. Also $\sum_i \theta_i \si{\celsius} = \SI{29.406}{\celsius} \approx \SI{30}{\celsius}$. Der Literaturwert von der Wärmekapazität des Wassers lautet $C_{S\text{ (lit)}} = \SI{4.1801}{\joule\per\gram\per\kelvin}$ bei \SI{30}{\celsius} \footnote{\url{www.engineeringtoolbox.com/specific-heat-capacity-water-d_660.html}}.
+
+		Folglich unterscheiden sich die Werten signifikant voneinander. 
+
+		Dieser Unterschied kann vielleicht darauf zurückgeführt werden, dass die tatsächliche Unsicherheiten von der Messung der Spannung nicht berücksichtigt würden. Während der Messungen wurde beobachtet, dass die Spannung sich im Verlauf des Experiements deutlich schwingt. Somit könnte die tatsächliche Unsicherheit bei der Messung deutlich größer sein als die, die der Hersteller ermittelt hat. Das hat vermütlich zu einer geringer Unsicherheit bei $C_S$ geführt. 
+
+		Weiterhin ist das Heizungselement höchstwahrscheinlich nicht 100\% effizient, also könnte die berechnete Leistung $P=IV$ viel größer als die tatsächliche Leistung sein, was zu einem größeren $C_S$ liefern würde. 

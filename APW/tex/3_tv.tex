@@ -1,0 +1,70 @@
+\newpage
+\section{Teilversuch 3: Bestimmung der spezifischen Schmelzwärme von Eis}
+Wir berechnen zunächst die Masse von Wasser und Eis, die im Experiment verwendet wurden:
+\begin{align}
+	m_1 &= m_\text{wasser} = m_\text{Wasser+Alu} - m_\text{Alu} =\SI{717.30}{\gram} - \SI{295.06}{\gram} = \SI{422.24}{\gram} \\
+	\Delta m_1 &= \sqrt{(\Delta m_\text{Wasser+Alu})^2 + (\Delta m_\text{Alu})^2} = \sqrt{(\SI{0.13}{\gram})^2 + (\SI{0.03}{\gram})^2} \notag \\
+	&= \SI{0.14}{\gram} \\
+	m_\text{Eis} &= m_\text{Eis+Alu} - m_\text{Alu} =\SI{505.14}{\gram} - \SI{296.65}{\gram} = \SI{208.49}{\gram} \\
+	\Delta m_\text{Eis} &= \sqrt{(\Delta m_\text{Eis+Alu})^2 + (\Delta m_\text{Alu})^2} = \sqrt{(\SI{0.03}{\gram})^2 + (\SI{0.03}{\gram})^2} \notag \\
+	&= \SI{0.05}{\gram} \\
+\end{align}
+Aus der Anleitung gilt:
+\begin{align}
+	c_\text{w} m_{\text{Eis}}(T_M-T_0) + \lambda m_{\text{Eis}} &= c_\text{w}(m_1 + m_w^*) (T_1 - T_M) \\
+	\Leftrightarrow  \lambda &= \frac{c_\text{w} \left[(m_1 + m_w^*)(T_1 -T_M) - m_\text{Eis} (T_M -T_0)\right] }{m_\text{Eis}} \notag \\
+	&=\frac{c_\text{w}}{m_\text{Eis}}(m_1 + m_w^*)(T_1 -T_M) - c_\text{w}(T_M -T_0)
+\end{align}
+mit dem Fehler:
+\begin{align}
+	\Delta \lambda = \gausserror{\lambda}{m_1, T_1, T_M, T_0, m_\text{Eis}, m_w^*}
+\end{align}
+wobei:
+\begin{align*}
+	\pdv{\lambda}{m_1} &= \frac{c_\text{w}}{m_\text{Eis}}(T_1 - T_M) = \pdv{\lambda}{m_w^*} \\
+	\pdv{\lambda}{T_1} &= \frac{c_\text{w}}{m_\text{Eis}}(m_1 + m_w^*) \\
+	\pdv{\lambda}{T_m} &= -\frac{c_\text{w}}{m_\text{Eis}}(m_1 + m_w^*) - c_\text{w} \\
+	\pdv{\lambda}{T_0} &= c_\text{w} \\
+	\pdv{\lambda}{m_\text{Eis}} &= \frac{c_\text{w}}{m^2_\text{Eis}}(m_1 + m_w^*)(T_1 -T_M)
+\end{align*}
+somit:
+\begin{align*}
+	\Delta \lambda &= \left[
+		\left(\frac{c_\text{w}}{m_\text{Eis}}(T_1 - T_M) \Delta m_1\right)^2 
+		+ \left(\frac{c_\text{w}}{m_\text{Eis}}(m_1 + m_w^*) \Delta T_1\right)^2
+		+ \left(\left(-\frac{c_\text{w}}{m_\text{Eis}}(m_1 + m_w^*) - c_\text{w}\right) \Delta T_m\right)^2 \right. \\
+		&\phantom{=} \left. + \left(c_\text{w} \Delta T_0\right)^2 
+		+ \left(\frac{c_\text{w}}{m^2_\text{Eis}}(m_1 + m_w^*)(T_1 -T_M) \Delta m_\text{Eis}\right)^2 
+		+ \left(\frac{c_\text{w}}{m_\text{Eis}}(T_1 - T_M) \Delta m_w^*\right)^2
+	\right]^{1/2}
+\end{align*}
+% Wir benutzen im diesem Fall den von Hersteller gegebenen Wasserwert, somit verschwinden auch die Unsicherheit in dem Wasserwert. 
+\newpage
+Mit der Werten:
+\begin{center}
+	\begin{tabular}{lll}
+		\toprule
+		Variable & Wert & Bedeutung \\
+		\midrule
+		$m_1$ & \SI{422.24(14)}{\gram} & Masse des Wassers \\
+		$m_\text{Eis}$ & \SI{208.49(5)}{\gram} & Masse des Eises \\
+		$m_w^*$ & \SI{50(30)}{\gram} & Wasserwert des Kalorimeters \\
+		$T_1$ & \SI{47.8(1)}{\celsius} & Temperatur des Wassers \\
+		$T_M$ & \SI{16.8(2)}{\celsius} & Temperatur des Mischung \\
+		$T_0$ & \SI{1.5(1)}{\celsius} & Temperatur des Eises \\
+		$c_\text{w}$ & \SI{4.18}{\joule\per\gram\per\kelvin} & Spezifische Wärmekapazität des Wassers\\
+		\bottomrule
+	\end{tabular}
+\end{center}
+haben wir:
+\begin{align*}
+	\lambda &= \frac{\SI{4.18}{\joule\per\gram\per\kelvin}}{\SI{208.49}{\gram}}(\SI{422.24}{\gram} + \SI{80}{\gram})(\SI{47.8}{\celsius} -\SI{16.8}{\celsius}) - (\SI{4.18}{\joule\per\gram\per\kelvin})(\SI{16.8}{\celsius} -\SI{1.5}{\celsius}) \\
+	&= \SI{229.551}{\joule\per\gram} \sigfig{6} \\
+	\Delta \lambda &= \SI{18.8730}{\joule\per\gram} \sigfig{6} \\
+	\Rightarrow \lambda &= \SI{230(19)}{\joule\per\gram}
+\end{align*}
+Sodass die Ergebnisse überschaubar bleiben, sind die Subtitution hier nicht explizit hingeschrieben.
+
+Im Vergleich zum Literaturwert von $\SI{333}{\joule\per\gram}$ unterscheidet sich die zwei Werten signifikant voneinander. Diese Unterschied könnte daran liegen, dass die Masse von dem benutzten Eis schwer bestimmbar ist. Es gibt oft immer noch ein bisschen geschmolzte Eis (Wasser), ob wir das Tauwasser schon gegossen haben. Das soll zu einer größeren Unsicherheit bei der Masse der Eis führen, was in diesem Fall nicht berücksichtigt geworden ist. Mit weniger Eis, wird die Temperaturunterschied $(T_1 - T_M)$ kleiner sein, was weiter zu einer niedriger Schmelzwärme führen wird.
+
+Es ist auch beobachtet, dass die Temperatur des Eises nicht $\SI{0}{\celsius}$ ist. Das könnte entweder aus einem Fehler im Thermometer entstehen, oder es gibt Verunreinigungen im Eis, was die Schmelzwärme ändern werden. Außerdem könnte es auch noch Wärmeaustausch mit der Umgebung geben, was schwer zu messen ist. Alle diese Gründe werden zu einer niedriger Schmelzwärme führen, was hier erhalten ist. 

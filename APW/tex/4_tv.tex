@@ -1,0 +1,95 @@
+\newpage
+\section{Teilversuch 4: Adiabatische Zustandsänderung}
+
+Fehler bei der Zeitmessung $\Delta T = \SI{0,4}{\second}$,
+
+Für 7 Schwingungen ist die gesamte Schwingungsdauer $T$ gemessen als:
+\begin{equation*}
+	\begin{tabu}{l *{7}{l}}
+		\toprule
+		\text{Versuch } i & 1 & 2 & 3 & 4 & 5 & 6 & \tau \\
+		\midrule
+		\text{Ohne Kolben } T_i/\si{\second} & 8,18 & 8,18 & 7,96 & 8,40 & 7,98 & 8,26 & \tau_0 = 1,1657\\
+		\text{Mit Kolben } T_i/\si{\second} & 5,52 & 5,63 & 5,83 & 5,72 & 5,47 & 5,46  & \tau_k = 0,8007\\
+		\bottomrule
+	\end{tabu}
+\end{equation*}
+wobei $\tau$ die Zeit für eine Schwingung ist, berechnet durch:
+\begin{equation}
+	\tau = \frac{1}{6 \times 7}\sum_{i=1}^6 T_i = \frac{1}{42}\sum_{i=1}^6 T_i
+\end{equation}
+mit dem Fehler:
+\begin{equation}
+	\Delta \tau = \frac{1}{42} \sqrt{6(\Delta T)^2} = \frac{1}{7\sqrt{6}}\Delta T = \SI{0.024}{\second}
+\end{equation}
+Wir berechnen zunächst die Volumen $V$:
+\begin{align*}
+	V &= \frac{(M_{\text{Wasser+Kolben}} - M_{\text{Kolben}})}{\rho_\text{Wasser}}+ \pi h \left(\frac{d}{2}\right)^2 \\
+	&=  \frac{(\SI{1504.50}{\gram} - \SI{397.35}{\gram})}{\SI{9.97e-4}{\gram\per\milli\meter\cubed}}+ \pi (\SI{139}{\milli\meter})\left(\frac{\SI{17}{\milli\meter}}{2}\right)^2 \\
+	&= \SI{1142031.674}{\milli\meter\cubed} \sigfig{10}
+\end{align*}
+Mit dem Fehler:
+\begin{align}
+	\Delta V &= \gausserror{V}{M_{\text{Wasser+Kolben}}, M_{\text{Kolben}}, h, d}
+\end{align}
+wobei
+\begin{align*}
+	\pdv{V}{M_{\text{Wasser+Kolben}}} = - \pdv{V}{M_{\text{Kolben}}} &= \frac{1}{\rho_\text{Wasser}}\\
+	\pdv{V}{h} &= \pi \left(\frac{d}{2}\right)^2 \\
+	\pdv{V}{d} &= 2 \pi h \left(\frac{d}{2}\right) \times \frac{1}{2} = \pi h \left(\frac{d}{2}\right)
+\end{align*}
+Somit ist der Fehler wegen $\Delta x \coloneqq \Delta h = \Delta d$:
+\begin{align*}
+	\Delta V &= \sqrt{\left(\frac{(\Delta M_{\text{Wasser+Kolben}})^2 + (\Delta M_{\text{Kolben}})^2}{(\rho_\text{Wasser})^2}\right) + \pi^2 (\Delta x)^2\left(\left(\frac{d}{2}\right)^4 + h^2 \left(\frac{d}{2}\right)^2\right)} \\
+	&= \sqrt{\left(\frac{(\SI{0.13}{\gram})^2 + (\SI{0.03}{\gram})^2}{(\SI{9.97e-4}{\gram\per\milli\meter\cubed})^2}\right) + \pi^2 (\SI{1}{\milli\meter})^2\left(\left(\frac{\SI{17}{\milli\meter}}{2}\right)^4 + (\SI{139}{\milli\meter})^2 \left(\frac{\SI{17}{\milli\meter}}{2}\right)^2\right)} \\
+	&= \SI{3718.73}{\milli\meter\cubed} \sigfig{6}
+\end{align*}
+Folglich haben wir $V = \SI{1142000(4000)}{\milli\meter\cubed} = \SI{1.142(4)e6}{\milli\meter\cubed}$
+
+Aus der Anleitung gilt:
+\begin{align}
+	\gamma = \frac{2\rho g V}{p A} \left[\frac{\tau_0^2}{\tau_k^2} - 1\right] = \frac{2\rho g V}{\pi p \left(\frac{d}{2}\right)^2} \left[\frac{\tau_0^2}{\tau_k^2} - 1\right]
+	= \frac{8\rho g V}{\pi p d^2} \left[\frac{\tau_0^2}{\tau_k^2} - 1\right]
+\end{align}
+mit dem Fehler:
+\begin{align}
+	\Delta \gamma = \gausserror{\gamma}{V, p, d, \tau_0, \tau_k}
+\end{align}
+wobei:
+\begin{align*}
+	\pdv{\gamma}{V} &= \frac{8\rho g}{\pi p d^2} \left[\frac{\tau_0^2}{\tau_k^2} - 1\right] = \frac{\gamma}{V}\\
+	\pdv{\gamma}{p} &= -\frac{8\rho g V}{\pi p^2 d^2} \left[\frac{\tau_0^2}{\tau_k^2} - 1\right] = -\frac{\gamma}{p}\\
+	\pdv{\gamma}{d} &= (-2)\frac{8\rho g V}{\pi p d^3} \left[\frac{\tau_0^2}{\tau_k^2} - 1\right] = -\frac{2\gamma}{d}\\
+	\pdv{\gamma}{\tau_0} &= 2\times\frac{8\rho g V}{\pi p d^2} \left[\frac{\tau_0}{\tau_k^2}\right] = \frac{16\rho g V}{\pi p d^2} \left[\frac{\tau_0}{\tau_k^2}\right]\\
+	\pdv{\gamma}{\tau_k} &= (-2)\times\frac{8\rho g V}{\pi p d^2} \left[\frac{\tau_0^2}{\tau_k^3}\right] = -\frac{16\rho g V}{\pi p d^2} \left[\frac{\tau_0^2}{\tau_k^3}\right]
+\end{align*}
+Somit ist der Fehler:
+\begin{align}
+	\Delta \gamma = \sqrt{\gamma^2\left[ \left(\frac{\Delta V}{V}\right)^2 + \left(\frac{\Delta p}{p}\right)^2 + \left(\frac{\Delta d}{d}\right)^2\right] + \left(\frac{16\rho g V}{\pi p d^2} \left[\frac{\tau_0^2}{\tau_k^2}\right]\right)^2\left[\left(\frac{\Delta \tau_0}{\tau_0}\right)^2 + \left(\frac{\Delta \tau_k}{\tau_k}\right)^2\right]}
+\end{align}
+Mit den Werten:
+\begin{center}
+	\begin{tabular}{lll}
+		\toprule
+		Variable & Wert & Bedeutung \\
+		\midrule
+		$V$ &  \SI{1.142(4)e-3}{\meter\cubed} & Volumen der Luft \\
+		$p$ &  \SI{9.582(1)e4}{\pascal} & Atmosphärendruck \\
+		$d$ &  \SI{1.7(1)e-2}{\meter} & Durchmesser des Rohres \\
+		$\tau_0$ &  \SI{1,166(24)}{\second} & Schwingungsdauer ohne Kolben \\
+		$\tau_k$ &  \SI{0,801(24)}{\second} & Schwingungsdauer mit Kolben \\
+		$\rho$ &  \SI{997}{\kilo\gram\per\meter\cubed} & Wasserdichte \\
+		$g$ &  \SI{9.81}{\meter\per\second\squared} & Erdbeschleunigung \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+erhalten wir:
+\begin{align*}
+	\gamma &= \frac{8(\SI{997}{\kilo\gram\per\meter\cubed}) (\SI{9.81}{\meter\per\second\squared}) (\SI{1.142e-3}{\meter\cubed})}{\pi (\SI{9.582e4}{\pascal}) (\SI{1.7e-2}{\meter})^2} \left[\frac{(\SI{1,166}{\second})^2}{(\SI{0.801}{\second})^2} - 1\right] \\
+	&= \num{1.14934} \sigfig{6} \\
+	\Delta \gamma &= \num{0.172120} \sigfig{6} \\
+	\Rightarrow \gamma &= \num{1.15(18)}
+\end{align*}
+Sodass die Ergebnisse überschaubar bleiben, sind die Subtitution hier nicht explizit hingeschrieben.
+
+Als Literaturwert haben wir $\gamma_\text{lit} = 1.4$. Da $\gamma_\text{lit}$ in dreifaches des Fehlerintervalls von $\gamma$ liegt, ist also das Ergebnis verträglich mit dem Vergleichswert $\gamma_\text{lit}$. Die Unterschied liegt vermütlich daran, dass die Zeitmessungen wegen der Eigenarbeit nicht so genau waren.

@@ -1,0 +1,51 @@
+\section{Teilversuch 5: Strahlung eines Hohlraumstrahers}
+	Raumtemperatur $T_0 = \SI{29.0(1)}{\celsius}$
+
+	Fehler bei Messung der Spannung $\Delta V = \SI{2}{\micro\volt}$\\
+	Fehler bei der Temperatur $\Delta \theta = \SI{0.1}{\celsius} = \SI{0.1}{\kelvin}$
+	\begin{equation*}
+		\begin{tabu}{l *{11}{c}}
+			\toprule
+			\theta/\si{\celsius} & 80 & 100 & 130 & 160 & 190 & 210 & 240 & 270 & 300 & 330 & 350 \\
+			\midrule
+			V/\si{\micro\volt} & 10 & 18 & 25 & 52 & 63 & 79 & 108 & 139 & 174 & 222 & 250 \\
+			\bottomrule
+		\end{tabu}
+	\end{equation*}
+	Fehler für $x = (T^4 - T_0^4)$ ist gegeben durch:
+	\begin{align}
+		\Delta x = \Delta(T^4 - T_0^4) = \gausserror{x}{T,T_0}
+	\end{align}
+	mit 
+	\begin{align}
+		\pdv{x}{T} = 4T^3 && 
+		\pdv{x}{T_0} = -4T_0^3
+	\end{align}
+	Somit gilt wegen $\Delta T_0 = \Delta T = \Delta \theta = \SI{0.1}{\kelvin}$:
+	\begin{align*}
+		\Delta x &= \sqrt{\left(4T^3 \cdot \Delta T\right)^2 + \left(-4T_0^3 \cdot \Delta T_0\right)^2} \\
+		&= 4 \Delta \theta \sqrt{T^6 + T_0^6}
+	\end{align*}
+	In diesem Fall ist die Energieverlustrate wegen Strahlung aus den Hohlraum proportional zu $T^4$ und die Energiegewinnrate des Hohlraums aus der Umgebung proportional zu $T_0^4$. Somit ist die Nettoverlust an Energie, die wir im Experiment gemessen haben, proportional zu $T^4 - T_0^4$. Deshalb ist $T_0^4$ hier abgezogen.
+	% Während des Experiments haben wir bei jeder Messung das Messgerät immer erst auf $0$ gesetzt, also ist die Strahlung wegen des Raumtemperaturs immer nicht im Messung berücksichtigt. 
+
+	Die Daten wurden dann mit \gnuplot{} geplottet und es wurde eine Kurvenanpassung zur $V = bx + c$ durchgeführt. Die Berechnung der jeweiligen Fehler erfolgt dann direkt im \gnuplot{}. Siehe Appendix \ref{appdx:gnuplotTV5} für die genaue Berechnung im Skript. 
+	\begin{figure}[H]
+		\centering
+		\input{tv5-plot.tex}
+		\caption{\centering Überprüfung des Stefan-Boltzmannschen Gesetzes\captionbr $\chi^2_{\text{red}} = \num{2.43832}$}
+		\label{fig:tvfive-plot}
+		\vspace{-1em}
+	\end{figure}
+	Als Endergebnis erhalten wir:
+	\begin{equation*}
+		\begin{tabu}{ll}
+			\toprule
+			b & \SI{17.8711(2133)e-10}{\micro\volt\per\kelvin^4} \\
+			c & \SI{-2.420(1577)}{\micro\volt} \\
+			\bottomrule
+		\end{tabu}
+	\end{equation*}
+	Da die Auswertung mittels \gnuplot{} erfolgt, sind die Fehlerstriefen nicht gezeichnet, sondern nur als die Unsicherheit in $b$ protokolliert. 
+
+	Aus der guten Kurveanpassung sieht man, dass das Stefan-Boltzmannsche Gesetz tatsächlich stimmt. Die Abweichungen der Punkten von der optimalen Gerade ist wahrscheinlich wegen der nicht konstante Temperatur des Räumes während des Experiments. 

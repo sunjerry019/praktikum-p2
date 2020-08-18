@@ -1,0 +1,53 @@
+\newpage	
+\section{Teilversuch 1: Belastungsabhängigkeit zweier Spannungsquellen}
+
+Leerlaufspannung vorher $U_0 = \SI{1.365(8)}{\volt}$ \\
+Leerlaufspannung nachher $U_1 = \SI{1.354(8)}{\volt}$
+
+Fehler bei der Strommessung $\Delta I = \pm 0,8\% \text{ Messwert} + 1 \text{ Digit}$ \\
+Fehler bei der Spannungmessung $\Delta I = \pm 0,5\% \text{ Messwert} + 1 \text{ Digit}$
+\begin{equation*}
+	\begin{tabu}{l *{11}{l}}
+		\toprule
+		I/\si{\milli\ampere} & 10,6 & 13,4 & 16,2 & 19,1 & 21,9 & 24,8 & 27,5 & 30,6 & 33,1 & 35,9 & 38,7 \\
+		\midrule
+		U/\si{\volt} & 1,332 & 1,322 & 1,317 & 1,312 & 1,308 & 1,303 & 1,300 & 1,294 & 1,290 & 1,286 & 1,282 \\
+		\bottomrule
+	\end{tabu}
+\end{equation*}
+Die Daten wurden mit \gnuplot{} geplottet und es wurde eine Kurvenanpassung zur $U = mI + c$ durchgeführt. Die entsprechenden Fehler sind im \gnuplot{} direkt berechnet. Für die genaue Rechnung, siehe Appendix \ref{appdx:gnuplottv1}. 
+\begin{figure}[H]
+	\centering
+	\input{./plots/tv1-plot.tex}
+	\caption{\centering Belastungsabhängigkeit einer galvanischen Zelle \captionbr $\chi^2_{\text{red}} = \num{0.0525026} \implies$ Gute Anpassung}
+	\label{fig:tvone-plot}
+	\vspace{-1em}
+\end{figure}
+Als Endergebnis erhalten wir:
+\begin{equation*}
+	\begin{tabu}{lll}
+		\toprule
+		\text{Variable} & \text{Wert} & \text{Gerundet} \\
+		\midrule
+		m & \SI{-1.67333(5845)e-3}{\kilo\ohm} & \SI{-1.67(6)}{\ohm}\\
+		c & \SI{1.34552(155)}{\volt} & \SI{1.3455(16)}{\volt} \\
+		\bottomrule
+	\end{tabu}
+\end{equation*}
+Aus Gleichung (7) der Anleitung entspricht die Steigung $m$ den Innenwiderstand $R_i$, also ist der Innenwiderstand $R_i = \SI{1.67}{\ohm}$. 
+
+Die extraploierte Leerlaufspannung ist gegeben durch $U_q = \SI{1.3455(16)}{\volt}$, was kleiner als die gemessene Leerlaufspannung ist. Das ist vermütlich wegen der nicht vernachlässigbaren Widerstand des als Amperemeter benutzten Multimeters.
+
+Für das Netzgerät ergibt sich das folgende Verhältnis:
+\begin{figure}[H]
+	\centering
+	\input{./plots/tv1-ng-plot.tex}
+	\caption{\centering Belastungsabhängigkeit eines Netzgerät}
+	\label{fig:tvone-ng-plot}
+	\vspace{-1em}
+\end{figure}
+Für einen Belastungsstrom unterhalb ca. $\SI{1.1}{\ampere}$ ist die Spannung relativ stabil, was bei der galvanischen Zelle nicht der Fall ist. Danach gibt es eine deutliche Sprung bei ca. $\SI{1.3}{\ampere}$ und die nimmt stetig Spannung stetig ab. 
+
+Mit dem Netzgerät gibt es also eine Belastungsgrenze, nachdem das Netzgerät keine stabile Spannung behalten kann. Mit der galvanische Zelle gibt es überhaupt keine stabile Spannung und wird je nach Belastungsstrom unterschiedliche Spannung liefern. 
+
+Es gibt diese Unterschied, weil das Netzgerät von elektronischen Mitteln geregelt ist und theoretisch beliebig viel Strom vom Stromnetz ziehen kann (im Praxis gibt es eine obere Schranke), um die Ausgangsspannung aufrechtszuerhalten. Das Netzgerät ist also eine stabilierte Spannungsquelle. Bei der galvanische Zelle gibt es aber nur die Spannung aus dem gespeicherten chemischen Potential, deshalb sinkt die Spannung mit steigendem Strom. 

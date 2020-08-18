@@ -1,0 +1,86 @@
+\newpage
+\section{Teilversuch 4: Spannungsmessung durch Kompensation}
+	\subsection{Kalibrieren der Konpensationsanordnung}
+		Seien die Spannung des Netzgeräts $U_0$ und die Spannung des Spannungsneutral $U_N$. Seien ferner, dass $R_0$ die Widerstand des ganzen Helipots ($x = x_0 = 1000$ Schritte) ist und $R_N$ die Widerstand des Teil des Helipots ($x_{\!N}$ Schritte) ist, wobei die Nullinstrument auf Null zeigt.
+
+		Aus Kapital 1.5 der Anleitung gilt dann das folgende Verhältnis:
+		\begin{equation}
+			U_0 = \frac{R_0}{R_N} U_{\!N}
+		\end{equation}
+		Da $R$ proportional zur Anzahl der Schritten auf dem Helipot ist, gilt auch:
+		\begin{equation}
+			U_0 = \frac{x_0}{x_{\!N}}U_{\!N} \label{eqn:kalibierung}
+		\end{equation}
+		mit dem entsprechen Fehler:
+		\begin{align}
+			\Delta U_0 = U_0 \relquad{x_0, x_{\!N}, U_{\!N}} 
+		\end{align}
+		Als Messwerten haben wir:
+		\begin{center}
+			\begin{tabular}{lll}
+				\toprule
+				Variable & Wert & Bedeutung \\
+				\midrule
+				$x_0$ & (\num{1000.0(5)}) Schritt & Helipot Max Schritte \\
+				$x_{\!N}$ & (\num{537.0(5)}) Schritt & Helipotwert bei ausgeglichene Spannung  \\
+				$U_{\!N}$ & \SI{1.0000(1)}{\volt} & Normalspannung  \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		Es gibt außerdem einen Ablesungsfehler bei der Nullinstrument von $\pm \SI{0.025}{\milli\ampere}$. Es ist aber schwer diesen Fehler in unserer Berechnung zu berücksichtigen, da es nicht explizit vorkommt. Wir machen hier deshalb eine grobe Abschätzung nach Erfahrungen und den Fehler bei dem Helipotwert erhöhen:
+		\begin{center}
+			\begin{tabular}{lll}
+				\toprule
+				Variable & Wert & Bedeutung \\
+				\midrule
+				$x_0$ & (\num{1000.0(5)}) Schritt & Helipot Max Schritte \\
+				$x_{\!N}$ & (\num{537(2)}) Schritt & Helipotwert bei ausgeglichene Spannung  \\
+				$U_{\!N}$ & \SI{1.0000(1)}{\volt} & Normalspannung  \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		Somit ergibt sich
+		\begin{align}
+			U_0 &= \frac{\num{1000}}{\num{537}}\times\SI{1.0000}{\volt} = \SI{1.86220}{\volt} \sigfig{6} \\
+			\Delta U_0 &= \frac{\num{1000}}{\num{537}}\times\SI{1.0000}{\volt} \times \sqrt{\left(\frac{0.5}{\num{1000.0}}\right)^2 + \left(\frac{2}{\num{537}}\right)^2 + \left(\frac{0.0001}{\num{1.0000}}\right)^2} \notag \\
+			&= \SI{7.00026e-3}{\volt} \sigfig{6}
+		\end{align}
+		eine Spannung von $U_0 = \SI{1.862(8)}{\volt}$.
+
+		Wenn man den Fehler bei der Spannungsnormal vernachlässigen, dann haben wir:
+		\begin{align}
+			\Delta U_0 &= \frac{\num{1000}}{\num{537}}\times\SI{1.0000}{\volt} \times \sqrt{\left(\frac{0.5}{\num{1000.0}}\right)^2 + \left(\frac{2}{\num{537}}\right)^2} \notag \\
+			&= \SI{6.99778e-3}{\volt} \sigfig{6}
+		\end{align}
+		Aufgerundet haben wir einen Fehler von $\SI{7e-3}{\volt}$, was kleiner als den ursprunglich berechneten Fehler. Diese Unsicherheit ist aber in der 3. Nachkommastelle, was den Wert nicht viel ändert. Somit kann man den Fehler in der Spannungsnormal vernächlassigen, wenn man sowieso nicht mehr als 2 Nachkommastellen braucht. 
+
+	\subsection{Klemmungspannung einer galvanische Zelle}:
+		Sei $U_G$ die Klammungspannung der galvanische Zelle, dann gilt aus \eqref{eqn:kalibierung}:
+		\begin{align}
+			U_0 = \frac{x_0}{x_G}U_G && \Leftrightarrow && U_G = \frac{x_G}{x_0}U_0
+		\end{align}
+		mit dem entsprechenden Fehler:
+		\begin{align}
+			\Delta U_G = U_G \relquad{x_0, x_G, U_0} 
+		\end{align}
+		Wir machen wieder die grobe Abschätzung:
+		\begin{center}
+			\begin{tabular}{lll}
+				\toprule
+				Variable & Wert & Bedeutung \\
+				\midrule
+				$U_0$ & \SI{1.862(8)}{\volt} & Spannung des Netzgeräts  \\
+				$x_0$ & (\num{1000.0(5)}) Schritt & Helipot Max Schritte \\
+				$x_G$ & (\num{728(2)}) Schritt & Helipotwert bei ausgeglichene Spannung  \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		und erhalten:
+		\begin{align}
+			U_G &= \frac{\num{728}}{\num{1000}}\times\SI{1.826}{\volt} = \SI{1.32933}{\volt} \sigfig{6} \\
+			\Delta U_0 &= \frac{\num{728}}{\num{1000}}\times\SI{1.826}{\volt}\times \sqrt{\left(\frac{0.5}{\num{1000.0}}\right)^2 + \left(\frac{2}{\num{728}}\right)^2 + \left(\frac{0.008}{\num{1.862}}\right)^2} \notag \\
+			&= \SI{6.81168e-3}{\volt} \sigfig{6}
+		\end{align}
+		eine Spannung von $U_G = \SI{1.329(7)}{\volt}$. 
+
+		Im Vergleich zu dem Ergebnis aus Teilversuch 1 ist das erhaltene $U_G$ kleiner geworden. Es könnte sein, dass die galvanische Zelle durch das Kompensationsprozess mit Strombelastet geworden ist, sodass die Klemmungspannung somit kleiner geworden ist. Diese bestimmte Spannung kann als Leerlaufspannung bezeichnet werden, da kein Strom durch die Zelle fließt. 

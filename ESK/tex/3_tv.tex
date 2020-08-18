@@ -1,0 +1,72 @@
+\newpage
+\section{Teilversuch 3: Spannungsabfall und Potentiometer}
+Fehler bei dem Skalawert $\Delta x = 0,5$ Schritt\\
+Fehler bei der Spannungmessung $\Delta U = 0,5\% \text{ Messwert} + 1$ Digit
+\begin{equation*}
+	\begin{tabu}{l *{11}{l}}
+		\toprule
+		\text{Skalawert $x/$Schritt} & 1000 & 900 & 800 & 700 & 600 & 500 & 400 & 300 & 200 & 100 & 0 \\
+		\midrule
+		\text{Helipot $U/\si{\volt}$} & 10,03 & 9,02 & 8,01 & 7,02 & 6,01 & 5,01 & 4,01 & 3,01 & 2,01 & 1,01 & 0,01 \\
+		\text{Netzgerät $U_0/\si{\volt}$} & 10,03 & 10,03 & 10,03 & 10,03 & 10,02 & 10,02 & 10,02 & 10,02 & 10,02 & 10,02 & 10,02 \\
+		\bottomrule
+	\end{tabu}
+\end{equation*}
+Die Daten wurden mit \gnuplot{} geplottet und es wurde eine Kurvenanpassung zur $U = mx + c$ durchgeführt. Die entsprechenden Fehler sind im \gnuplot{} direkt berechnet. Für die genaue Rechnung, siehe Appendix \ref{appdx:gnuplottv3}. 
+\begin{figure}[H]
+	\centering
+	\input{./plots/tv3-plot.tex}
+	\caption{\centering Spannungsabfall im Abhängigkeit from Skalenwert des Helipots \captionbr $\chi^2_{\text{red}} = \num{0.0121338} \implies$ Gute Anpassung}
+	\label{fig:tvthree-plot}
+	\vspace{-1em}
+\end{figure}
+Als Endergebnis erhalten wir:
+\begin{equation*}
+	\begin{tabu}{lll}
+		\toprule
+		\text{Variable} & \text{Wert} & \text{Gerundet} \\
+		\midrule
+		m & \SI{0.0100079(33)}{\volt}~\text{Schritt}^{-1} & \SI{0.010008(4)}{\volt}~\text{Schritt}^{-1}\\
+		c & \SI{0.009189(1003)}{\volt} & \SI{0.0092(11)}{\volt} \\
+		\bottomrule
+	\end{tabu}
+\end{equation*}
+Aus der Anleitung gilt aus
+\begin{equation}
+	R = \rho\frac{L}{A}
+\end{equation}
+dass
+\begin{equation}
+	U = \frac{x}{x_0}U_0 = \frac{U_0}{x_0} x
+\end{equation}
+Also ist die Spannung linear bezüglich $x$. Das ist tatsächlich was wir im Teilversuch 3(b) beobachtet haben. In Abbildung \ref{fig:tvthree-plot} ist diese lineare verhältnis klar veranschaulicht. 
+
+Im Teilversuch 3(a) haben wir als Messungen:
+\begin{equation*}
+	\begin{tabu}{ll}
+		\multicolumn{2}{l}{\SI{10}{\centi\meter} \text{ Messung}}\\
+		\toprule
+		\text{Messung 1} & \SI{0.615(5)}{\volt} \\
+		\text{Messung 2} & \SI{0.607(5)}{\volt} \\
+		\text{Messung 3} & \SI{0.613(5)}{\volt} \\
+		\bottomrule
+	\end{tabu}
+\end{equation*}
+Messungen 1 und 2 stimmt miteinander überein, und Messung 2 ist paarweise verträglich mit der anderen zwei Messungen, also ist die Spannungsabfall wie erwartet unabhängig davon, welchen Teil des Drahtes wir messen, sondern nur auf die Länge des gemessenes Teil. 
+
+Weiterhin haben wir für verschiedene Länge die Spannungsabfall gemessen. Das Ergebnis ist auch wie erwartet: Der Spannungsabfall steigt linear mit zunehmende Länge, und zwar etwa $\SI{0,6}{\volt}$ je $\SI{10}{\centi\meter}$:
+\begin{equation*}
+	\begin{tabu}{ll}
+		\toprule
+		\text{Länge} & \text{Spannung} \\
+		\midrule
+		\SI{20.0(4)}{\centi\meter} & \SI{1.167(7)}{\volt} \\
+		\SI{40.0(4)}{\centi\meter} & \SI{2.370(22)}{\volt} \\
+		\SI{60.0(4)}{\centi\meter} & \SI{3.630(29)}{\volt} \\
+		\SI{80.0(4)}{\centi\meter} & \SI{4.86(4)}{\volt} \\
+		\SI{90.0(4)}{\centi\meter} & \SI{5.50(4)}{\volt} \\
+		\bottomrule
+	\end{tabu}
+\end{equation*}
+Es ist auch im Versuch 3(a) beobachtet, dass der Draht warm wird, wenn Strom durch ihn fließt. Das ist ein gutes Kennzeichen dafür, dass es einen Spannungsabfall im Draht gibt. Spannung ist Arbeit pro Ladung. In diesem Fall ist die Energie einer Ladung ins Wärme umgewandelt und somit entsteht einen Potentialdifferenz im Draht. Fühlt man keine wärme (bspw. in Bananenkabeln), dann gibt es oft auch keinen oder nur wenig Spannungsabfall im Draht. 
+

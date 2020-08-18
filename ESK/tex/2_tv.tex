@@ -1,0 +1,51 @@
+\newpage
+\section{Teilversuch 2: Bestätigung des Ohmschen Gesetzes}
+Fehler bei der Spannungsmessung $\Delta U = \pm 0,5\% \text{ Messwert} + 1 \text{ Digit}$ \\
+Fehler bei der Strommessung $\Delta I = \pm 0,8\% \text{ Messwert} + 1 \text{ Digit}$
+\begin{equation*}
+	\begin{tabu}{l *{10}{l}}
+		\toprule
+		U/\si{\volt} & 2,07 & 4,08 & 6,01 & 8,02 & 10,06 & 12,15 & 14,14 & 16,09 & 18,02 & 19,99 \\
+		\midrule
+		I/\si{\milli\ampere} & 0,6 & 1,2 & 1,8 & 2,4 & 3,0 & 3,6 & 4,3 & 4,8 & 5,4 & 6,0 \\
+		\bottomrule
+	\end{tabu}
+\end{equation*}
+Die Daten wurden mit \gnuplot{} geplottet und es wurde eine Kurvenanpassung zur $U = mI + c$ durchgeführt. Die entsprechenden Fehler sind im \gnuplot{} direkt berechnet. Für die genaue Rechnung, siehe Appendix \ref{appdx:gnuplottv2}. 
+\begin{figure}[H]
+	\centering
+	\input{./plots/tv2-plot.tex}
+	\caption{\centering Bestätigung des Ohmschen Gesetzes \captionbr $\chi^2_{\text{red}} = \num{0.0435856} \implies$ Gute Anpassung}
+	\label{fig:tvtwo-plot}
+	\vspace{-1em}
+\end{figure}
+Als Endergebnis erhalten wir:
+\begin{equation*}
+	\begin{tabu}{lll}
+		\toprule
+		\text{Variable} & \text{Wert} & \text{Gerundet} \\
+		\midrule
+		m & \SI{3.3194(161)}{\kilo\ohm} & \SI{3.319(17)}{\kilo\ohm}\\
+		c & \SI{0.07578(5424)}{\volt} & \SI{0.08(6)}{\volt} \\
+		\bottomrule
+	\end{tabu}
+\end{equation*}
+Aus der Anleitung gilt das Ohmsche Gesetz:
+\begin{equation}
+	U = I\!R
+\end{equation}
+Also ist die Steigung den Widerstandwert und es gilt: $R = \SI{3.319(17)}{\kilo\ohm}$. Den Ordinateabschnitt vernachlässigen wir in diesem Fall, weil es sehr klein ist und die Theorie $0$ als Ordinateabschnitt liefert.
+
+Zusammengefasst haben wir:
+\begin{center}
+	\begin{tabular}{ll}
+		\toprule
+		Quelle & Widerstandswert \\		
+		\midrule
+		Hersteller & \SI{3.30(4)}{\kilo\ohm} \\
+		Multimeter & \SI{3.290(27)}{\kilo\ohm} \\
+		Steigung & \SI{3.319(17)}{\kilo\ohm} \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+Das Fehlerintervall aller 3 Widerstandswerten überschneiden sich paarweise miteinander. Die 3 Widerstandswerten stimmen folglich miteinander überein.

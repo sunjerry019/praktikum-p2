@@ -288,3 +288,4 @@ TSWLatexianTemp*
 # Custom
 *.mp4
 *.*~
+*.fuse_hidden*

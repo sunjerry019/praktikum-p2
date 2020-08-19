@@ -34,8 +34,8 @@
 	% \end{equation*}
 	Aus dem Induktionsgesetz gilt:
 	\begin{align}
-		U_{\text{ind}} &= - N \dv{}{t}\left(\vec{B} \cdot \vec{A}\,\right) = -N\!A \dv{B}{t} = -N\!A\mu_0\left(\frac{4}{5}\right)^{\nicefrac{3}{2}} \frac{N}{r}\cdot\dv{I}{t} \notag \\
-		\Rightarrow U_{\text{ind}} &= \left[-\left(\frac{4}{5}\right)^{\nicefrac{3}{2}} \frac{2\mu_0N^2A}{R}\right]\cdot\dv{I}{t}
+		U_{\text{ind}} &= - N_{\text{ind}} \dv{}{t}\left(\vec{B} \cdot \vec{A}\,\right) = -N_{\text{ind}}A \dv{B}{t} = -N_{\text{ind}}A\mu_0\left(\frac{4}{5}\right)^{\nicefrac{3}{2}} \frac{N}{r}\cdot\dv{I}{t} \notag \\
+		\Rightarrow U_{\text{ind}} &= \left[-\left(\frac{4}{5}\right)^{\nicefrac{3}{2}} \frac{2\mu_0N_{\text{ind}}N\!A}{R}\right]\cdot\dv{I}{t}
 	\end{align}
 	Also ist $U_{\text{ind}}$ proportional zu $\displaystyle \dv{I}{t}$, mit $R = $ Durchmesser wie im Teilversuch $3$.
 
@@ -53,8 +53,36 @@
 			\toprule
 			\text{Variable} & \text{Wert} & \text{Gerundet} \\
 			\midrule
-			m & \SI{-64.519(1445)}{\degree} & \SI{-64.5(15)}{\degree}\\
-			c & \SI{-0.140(1145)}{\degree} & \SI{-0.1(12)}{\degree} \\
+			m & \SI{-0.71645(1671)}{\milli\volt\second\per\milli\ampere} & \SI{-0.716(17)}{\milli\volt\second\per\milli\ampere}\\
+			c & \SI{-2.112(1791)}{\milli\volt} & \SI{-2.1(18)}{\milli\volt} \\
 			\bottomrule
 		\end{tabu}
 	\end{equation*} 
+	Die Gerade soll durch den Nullpunkt liegen, was verträglich mit unserem Ergebnis ist, da Null im Dreifachen des Fehlerintervalls von $c$ liegt. 
+
+	Der theoretische Wert von $m$ ist gegeben durch:
+	\begin{align}
+		m &= -\left(\frac{4}{5}\right)^{\nicefrac{3}{2}} \frac{2\mu_0N_{\text{ind}}N\!A}{R} \\
+		\Delta m &= m \frac{\Delta R}{R}
+	\end{align}
+	Mit der Werten:
+	\begin{center}
+		\begin{tabular}{lll}
+			\toprule
+			Variable & Wert & Bedeutung \\
+			\midrule
+			$R$ & \SI{27.57(5)}{\centi\meter} & Durchmesser der Helmholtzspule \\
+			$A$ & \SI{23.5}{\centi\meter\squared} & Fläsche der Induktionsspule \\
+			$N_\text{ind}$ & \SI{82800}{} & Windungszahl der Induktionsspule \\
+			$N$ & \SI{528}{} & Windungszahl der Helmholtzspule \\
+			$\mu_0$ & \SI{1.257e-6}{\newton\per\ampere\squared} & Magnetische Feldkonstante \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	erhalten wir:
+	\begin{align}
+		m &= -\left(\frac{4}{5}\right)^{\nicefrac{3}{2}} \frac{2(\SI{1.257e-6}{\newton\per\ampere\squared})(\SI{82800}{})(\SI{528}{})(\SI{2.35e-3}{\meter\squared})}{(\SI{0.2757}{\meter})} \notag\\
+		&= \SI{-0.670341}{\volt\second\per\ampere} \sigfig{6}\\
+		\Delta m &= (\SI{0.670341}{\volt\second\per\ampere}) \frac{\SI{0.05}{\centi\meter}}{\SI{27.57}{\centi\meter}} = \SI{1.21571e-3}{\volt\second\per\ampere} \sigfig{6} \\
+		\Rightarrow m &= \SI{-0.6703(13)}{\volt\second\per\ampere} = \SI{-0.6703(13)}{\milli\volt\second\per\milli\ampere}
+	\end{align}

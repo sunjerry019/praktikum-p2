@@ -1,7 +1,7 @@
 #!/usr/bin/env gnuplot
 
 set term epslatex color size 6in, 4in
-set output "tv2-plot.tex"
+set output "tv4-plot.tex"
 # set term epscairo color size 6in, 4in
 # set output "tv4-plot.eps"
 set decimalsign locale 'de_DE.UTF-8'
@@ -28,4 +28,4 @@ set key top right spacing 1.3
 
 titel = "$".gprintf("%.5f", m)." \\dv{I}{t} + (".gprintf("%.5f", c).")$"
 plot f(x) title titel lc rgb 'orangered4', \
-	"tv4.dat" u 1:2 title "Messpunkte" pointtype 1 lc rgb 'midnight-blue'
+	"tv4.dat" u 1:2 title "Messpunkte" pointtype 2 pointsize 2 lc rgb 'midnight-blue'

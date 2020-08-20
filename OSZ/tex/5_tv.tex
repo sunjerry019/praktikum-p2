@@ -1,0 +1,70 @@
+\newpage
+\section{Teilversuch 5: Quantitative Registrierung der Entladekurve eines Kondensators}
+	Aus dem Handbuch des Oszilloskop\footnote{\url{cdn.rohde-schwarz.com/hameg-archive/HM1507-3_deutsch.pdf}} gibt es zwei verscheidene Quelle von Unsicherheiten:
+	\begin{enumerate}
+		\item Ablenkkoeffizienten (vertikal und horizontal) 
+		\item Speicherauflösung
+	\end{enumerate}
+	Wir gehen davon aus, dass das Ablesen mittels des Cursors intern im Oszilloskop erfolgt. Somit spielt die Tolerenz bei den Ablenkkoeffizienten keine Rolle in den Daten. Folglich ist die Hauptunsicherheit die Speicherauflösung.
+
+	Diesbezüglich ist die Speicherauflösung:
+	\begin{center}
+		\begin{tabular}{lrrr}
+			\toprule
+			& Auflösung & Einst. & $\Delta$ Wert	\\
+			\textit{Einheit} & Punkte/Teilung & \_ / Teilung &  \\
+			\midrule
+			Vertikal & $25$ & \SI{1}{\volt} & $\pm \SI{0.02}{\volt}$ \\
+			Horizontal & $200$ & \SI{200}{\milli\second} & $\pm \SI{1}{\milli\second}$ \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	Da aber bei dem Ablesen von der Zeit nach $\SI{1}{\second}$ nur die erste Nachkommastelle gezeigt wurde, ist die Unsicherheit nach $\SI{1}{\second}$ viel größer und beträgt $\SI{0.05}{\second} = \SI{50}{\milli\second}$. 
+
+	Somit haben wir als Messdaten:
+	\begin{equation*}
+		\begin{tabu}{l *{13}{r}}
+			\toprule 
+			t/\si{\milli\second} & 0 & 93 & 163 & 280 & 441 & 500 & 600 & 700 & 800 & 900 & 1000 & 1100 & 1200 \\
+			\Delta t/\si{\milli\second} & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 50 & 50 & 50  \\
+			\midrule
+			U_C/\si{\volt} & 3,93 & 3,29 & 2,93 & 2,33 & 1,73 & 1,57 & 1,29 & 1,09 & 0,88 & 0,720 & 0,60 & 0,520 & 0,440 \\
+			\bottomrule
+		\end{tabu}
+	\end{equation*}
+	mit $\Delta U = \SI{0.02}{\volt}$.
+
+	Aus der Anleitung gilt:
+	\begin{align}
+		U_C &= U_0 \exp\left(-\frac{t}{RC}\right) && \Leftrightarrow && \ln U_C = \left(-\frac{1}{RC}\right)t + \ln U_0
+	\end{align}
+	Es ist aber wegen des Triggers so, dass der Kondesator bei $t = 0$ schon etwas entlädt hat, somit ergibt sich die modifizierte Gleichung:
+	\begin{equation}
+	  	\ln U_C = \left(-\frac{1}{RC}\right)t + \left(\ln U_0 -\frac{t_0}{RC}\right)
+	\end{equation}
+	Der entsprechende Fehler von $\ln U_C$ ist dann laut AMW:
+	\begin{equation}
+		\Delta (\ln U_C) = \frac{\Delta U_C}{U_C}
+	\end{equation}
+	$\ln (U_C/\si{\volt})$ wurde dann gegen die Zeit im \gnuplot{} geplottet und eine Kurveanpassung zur $\ln U_C = mt + c$ durchgeführt. 
+
+	Im \gnuplot{} sind die Messpunkten für $t$ ins \si{\second} umgewandelt, sodass die Größeordunung der beiden Achse ähnlich sind. Diese Vorgehensweise hilft bei der Kurveanpassung. Die entsprechende Fehler sind direkt im \gnuplot{} berechnet. Siehe Appendix \ref{appdx:gnuplottv5} für die genauer Rechnung.
+	\begin{figure}[H]
+		\centering
+		\input{./plots/tv5-plot.tex}
+		\caption{\centering Entladung einer Kondensators über einen \SI{1}{\mega\ohm} Resistor \captionbr $\chi^2_{\text{red}} = \num{0.476632} \implies$ Gute Anpassung}
+		\label{fig:tvfive-plot}
+		\vspace{-1em}
+	\end{figure}
+	Als Endergebnis erhalten wir:
+	\begin{equation*}
+		\begin{tabu}{lll}
+			\toprule
+			\text{Variable} & \text{Wert} & \text{Gerundet} \\
+			\midrule
+			m & \SI{-1.85444(918)}{\per\second} & \SI{-1.854(10)}{\per\second}\\
+			c & \SI{1.36878(274)}{} & \SI{1.3688(28)}{} \\
+			\bottomrule
+		\end{tabu}
+	\end{equation*} 
+

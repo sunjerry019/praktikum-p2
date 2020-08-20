@@ -40,7 +40,7 @@
 	\end{align}
 	Es ist aber wegen des Triggers so, dass der Kondesator bei $t = 0$ schon etwas entlädt hat, somit ergibt sich die modifizierte Gleichung:
 	\begin{equation}
-	  	\ln U_C = \left(-\frac{1}{RC}\right)t + \left(\ln U_0 -\frac{t_0}{RC}\right)
+	  	\ln U_C = \left(-\frac{1}{RC}\right)t + \left(\ln U_0 -\frac{t_0}{RC}\right) \label{eqn:tv5eqn}
 	\end{equation}
 	Der entsprechende Fehler von $\ln U_C$ ist dann laut AMW:
 	\begin{equation}
@@ -66,5 +66,17 @@
 			c & \SI{1.36878(274)}{} & \SI{1.3688(28)}{} \\
 			\bottomrule
 		\end{tabu}
-	\end{equation*} 
+	\end{equation*}
+	Aus \eqref{fig:tvfive-plot} gilt somit, dass die Relaxationszeit $t_e$ durch:
+	\begin{align}
+		t_e &= RC = -\frac{1}{m} = -\frac{1}{\SI{-1.854}{\per\second}} = \SI{0.539374}{\second} \sigfig{6} \\
+		\Delta t_e &= \abs{\pdv{t_e}{m}\Delta m} = \frac{\Delta m}{m^2} = \frac{\SI{0.010}{\per\second}}{(\SI{-1.854}{\per\second})^2}= 
+		\SI{2.90925e-3}{\second}\sigfig{6}
+	\end{align}
+	gegeben ist. Wir erhalten dann als Relaxationszeit $t_e = \SI{0.539(3)}{\second}$.
 
+	Im Experiment waren einen Widerstand von $\SI{1}{\mega\ohm}$ und einen Kondensator von $\SI{1}{\micro\farad}$ benutzt. Wir erwarten folglich eine Relaxationszeit von $t_e = (\SI{1e6}{\ohm})(\SI{1e-6}{\farad}) = \SI{1}{\second}$.
+
+	Im Vergleich dazu ist die erhaltene Relaxationszeit viel kleiner als die erwartete Relaxationszeit. Das liegt vermütlich daran, dass der effektive Widerstand des Schaltnetz durch die Verwendung vom Tastkopf und Oszilloscope im parallel zum $\SI{1}{\mega\ohm}$ Widerstand verringelt hat. Das wird dann zu einer geringen Relaxationszeit führen, was wir hier tatsächlich beobachtet haben. 
+
+	Wenn man noch Zusatzexperiment machen kann, kann man den Widerstand von Tastkopf charakterisieren, um zu wissen, ob die gemessene Daten mit der Theorie übereinstimmt. 

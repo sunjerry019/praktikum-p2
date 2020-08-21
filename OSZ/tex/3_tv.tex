@@ -1,1 +1,90 @@
 \section{Teilversuch 3: Messen einer Phasendifferenz}
+	Da man im Analogmodus theoretisch unendlich genau sein kann, hat der Hersteller keine Unsicherheiten für die Messugen gegeben. Wir schätzen somit die Fehler von den jeweiligen Messungen. Der größste Fehler ergibt sich durch das Ablesen, weil man per Augenmaß das Cursor mit der Kurve schneiden muss. Das ist leider eher ungenau und muss berücksichtigt werden. 
+	\subsection{Im $t$-$y$ Modus}
+		Aus der Anleitung gilt:
+		\begin{align}
+			\varphi &= 2\pi \frac{\Delta t}{T}= 2\pi f \Delta t \\
+			\Delta \varphi &= \varphi\relquad{(\Delta t), f}
+		\end{align}
+		Die aus dem Oszilloskop gelesene Werten sind wie folgt:
+		\begin{center}
+			\begin{tabular}{lll}
+				\toprule
+				Variable & Wert & Bedeutung \\
+				\midrule
+				$\Delta t$ & \SI{1.77(1)}{\milli\second} & Zeitverschiebung zwischen beiden Signalen\\
+				$f$ & \SI{100(1)}{\hertz} & Frequenz des Signals\\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		% Die Fehler sind in diesem Fall vernachlässigt, da der Fehler einzelner Messung schwer zu schätzen ist. 
+		Damit ergibt sich eine Phaseverschiebung von:
+		\begin{align}
+			\varphi =  2\pi (\SI{100}{\hertz}) (\SI{1.77e-3}{\second}) &= \SI{1.112}{\radian} \sigfig{4} \\
+			&= \SI{63.7}{\degree} \decpt{1}
+		\end{align}
+		mit dem Fehler
+		\begin{align}
+			\Delta \varphi = \left(2\pi (\SI{100}{\hertz}) (\SI{1.77e-3}{\second})\right)\sqrt{\left( \frac{\SI{0.01}{\milli\second}}{\SI{1.77}{\milli\second}}\right)^2 + \left( \frac{\SI{1}{\hertz}}{\SI{100}{\hertz}}\right)^2} = \SI{0.0128}{\radian} = \SI{0.732}{\degree}
+		\end{align}
+		Somit erhalten wir $\varphi = \SI{1.112(13)}{\radian} = \SI{63.7(8)}{\degree}$.
+	\subsection{Im $x$-$y$ Modus}
+		Aus der Anleitung gilt:
+		\begin{align}
+			\sin\varphi = \pm \frac{|\Delta x|}{2 \hat{x}}
+		\end{align}
+		Da wir im Bereich $[\SI{0}{\degree}, \SI{90}{\degree}]$ sind, gilt:
+		\begin{align}
+			\sin\varphi = \frac{|\Delta x|}{2 \hat{x}} && &\Leftrightarrow && \varphi = \arcsin \frac{|\Delta x|}{2 \hat{x}} 
+		\end{align}
+		Mit dem Fehler
+		\begin{align}
+			\Delta \varphi = \gausserror{\varphi}{(\Delta x), \hat{x}}
+		\end{align}
+		Aus $\Delta x > 0$ gilt
+		\begin{align}
+			\pdv{\varphi}{(\Delta x)} &= \left(1-\sbrace{\frac{\Delta x}{2 \hat{x}}}^2\right)^{-\nicefrac{1}{2}}\left(-\frac{1}{2 \hat{x}} \right) \\
+			\pdv{\varphi}{\hat{x}} &= \left(1-\sbrace{\frac{\Delta x}{2 \hat{x}}}^2\right)^{-\nicefrac{1}{2}} \left(\frac{\Delta x}{2 \hat{x}^2} \right)\\
+			\Delta \varphi &= \left(1-\sbrace{\frac{\Delta x}{2 \hat{x}}}^2\right)^{-\nicefrac{1}{2}} \cdot\frac{1}{2\hat{x}} \cdot \sqrt{\left(\Delta (\Delta x)\right)^2 + \left(\frac{\Delta x \Delta \hat{x}}{\hat{x}}\right)^2}
+		\end{align}
+		Wir haben aus dem Oszilloskop die folgende Messungen:
+		\begin{center}
+			\begin{tabular}{lll}
+				\toprule
+				Variable & Wert & Bedeutung \\
+				\midrule
+				$2\hat{x}$ & \SI{1.01(1)}{\volt} & Maximale Breite des Lissajous-Ellipse\\
+				$\Delta x$ & \SI{844(1)}{\milli\volt} & Distanz zwischen beiden Nullstellen\\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		% Die Fehler sind in diesem Fall vernachlässigt, da der Fehler einzelner Messung schwer zu schätzen ist. 
+		Damit ergibt sich eine Phasenverschiebung:
+		\begin{align}
+			\varphi = \arcsin \frac{\SI{0.844}{\volt}}{\SI{1.01}{\volt}} &= \SI{0.989}{\radian} \sigfig{3} \\
+			&= \SI{56.68}{\degree} \decpt{2}
+		\end{align}
+		mit
+		\begin{align}
+			\Delta \varphi &= \left(1-\sbrace{\frac{\SI{0.844}{\volt}}{2 (\SI{1.01}{\volt})}}^2\right)^{-\nicefrac{1}{2}} \cdot\frac{1}{2(\SI{1.01}{\volt})} \cdot \sqrt{\left(\SI{0.001}{\volt}\right)^2 + \left(\frac{(\SI{0.844}{\volt})(\SI{0.01}{\volt})}{\SI{1.01}{\volt}}\right)^2} \notag \\
+			&= \SI{3.85e-3}{\radian} = \SI{0.221}{\degree} \sigfig{3}
+		\end{align}
+		Also erhalten wir $\varphi = \SI{0.989(4)}{\radian} = \SI{56.68(23)}{\degree}$.
+	\subsection{Vergleich}
+		Zusammengefasst haben wir:
+		\begin{center}
+			\begin{tabular}{lrr}
+				\toprule
+				Modus & \multicolumn{2}{r}{Phasenverschiebung} \\
+				\midrule
+				$t$-$y$ & \SI{1.112(13)}{\radian} & \SI{63.7(8)}{\degree}\\
+				$x$-$y$ & \SI{0.989(4)}{\radian} & \SI{56.68(23)}{\degree}\\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		Also unterscheiden sich die Werten signifikant voneinander. 
+
+		Diese Unterschied liegt vermutlich daran, dass der Fehler für den jeweiligen Messungen unterschätzt war, besonders wenn wir ihn nachträglich geschätzt haben. Wie vorher erwähnt sind die Bestimmungsmethode eher ungenau. Sind die Fehlerintervall größer, dann könnte die Werte vertäglich miteinander sein. 
+
+		Es ist auch beobachtet, dass die Amplitude des verschobenen Signals kleiner im Vergleich zum Hauptsignal ist. Es ist aber in die Rechnungen für den $x$-$y$ Modusangenommen, dass die Amplitude beider Signale gleich sind. Somit ist diese Unterschied nicht berücksichtigt und es könnte gut sein, dass beide Werten $\Delta x$ und $\hat{x}$ davon beeinflusst sind. Das hat dann zu ein geringeres $\varphi$ geführt. 
+

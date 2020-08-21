@@ -25,13 +25,12 @@ f(x) = m*x + c
 fit f(x) "tv5.dat" u ($1/1000):(log($2)):($3/1000):(0.02/$2) xyerrors via m,c
 
 set key top right spacing 1.3
-
 titel = "$".gprintf("%.5f", m)."t + ".gprintf("%.5f", c)."$"
 plot f(x) title titel lc rgb 'dark-magenta', \
     "tv5.dat" u ($1/1000):(log($2)):($3/1000):(0.02/$2) with xyerrorbars title "Messpunkte" pointtype 0 lc rgb 'dark-goldenrod'
         \end{minted}
     }
-    mit \texttt{tv2.dat}:
+    mit \texttt{tv5.dat}:
     \begin{multicols}{2}
         \begin{minted}[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{text}
 # t/ms  U/V     delta t

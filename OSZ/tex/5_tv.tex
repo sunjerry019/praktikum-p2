@@ -1,3 +1,4 @@
+\newpage
 \section{Teilversuch 5: Quantitative Registrierung der Entladekurve eines Kondensators}
 	Aus dem Handbuch des Oszilloskop\footnote{\url{cdn.rohde-schwarz.com/hameg-archive/HM1507-3_deutsch.pdf}} gibt es zwei verscheidene Quelle von Unsicherheiten:
 	\begin{enumerate}
@@ -45,7 +46,7 @@
 	\begin{equation}
 		\Delta (\ln U_C) = \frac{\Delta U_C}{U_C}
 	\end{equation}
-	$\ln (U_C/\si{\volt})$ wurde dann gegen die Zeit im \gnuplot{} geplottet und eine Kurveanpassung zur $\ln U_C = mt + c$ durchgeführt. 
+	$\ln (U_C/\si{\volt})$ wurde dann gegen die Zeit im \gnuplot{} geplottet und eine Kurveanpassung zur $$\ln (U_C/\si{\volt}) = mt + c$$ durchgeführt. 
 
 	Im \gnuplot{} sind die Messpunkten für $t$ ins \si{\second} umgewandelt, sodass die Größeordunung der beiden Achse ähnlich sind. Diese Vorgehensweise hilft bei der Kurveanpassung. Die entsprechende Fehler sind direkt im \gnuplot{} berechnet. Siehe Appendix \ref{appdx:gnuplottv5} für die genauer Rechnung.
 	\begin{figure}[H]

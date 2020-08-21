@@ -76,6 +76,20 @@
 
 	Im Experiment waren einen Widerstand von $\SI{1}{\mega\ohm}$ und einen Kondensator von $\SI{1}{\micro\farad}$ benutzt. Wir erwarten folglich eine Relaxationszeit von $t_e = (\SI{1e6}{\ohm})(\SI{1e-6}{\farad}) = \SI{1}{\second}$.
 
-	Im Vergleich dazu ist die erhaltene Relaxationszeit viel kleiner als die erwartete Relaxationszeit. Das liegt vermütlich daran, dass der effektive Widerstand des Schaltnetz durch die Verwendung vom Tastkopf und Oszilloscope im parallel zum $\SI{1}{\mega\ohm}$ Widerstand verringelt hat. Das wird dann zu einer geringen Relaxationszeit führen, was wir hier tatsächlich beobachtet haben. 
+	Der entsprechende Fehler ist gegeben durch:
+	\begin{align}
+		\Delta t_e &= t_e \relquad{R, C} = \sqrt{\left(1\%\right)^2+\left(\frac{\SI{e-8}{\farad}}{\SI{1e-6}{\farad}}\right)^2} \notag\\
+		&=\SI{0.015}{\farad}
+	\end{align}
+	Also erhalten wir eine theoretische Relaxationszeit von $t_e = \SI{1.000(15)}{\second}$.
+	\begin{center}
+		\begin{tabular}{ll}
+			\toprule
+			Theoretische Wert & \SI{1.000(15)}{\second}\\
+			Experimentelle Wert & \SI{0.539(3)}{\second} \\ 
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	Im Vergleich ist die erhaltene Relaxationszeit viel kleiner als die erwartete Relaxationszeit, also unterscheiden sich die Werten signifikant voneinander. Das liegt vermütlich daran, dass der effektive Widerstand des Schaltnetz durch die Verwendung vom Tastkopf und Oszilloscope im parallel zum $\SI{1}{\mega\ohm}$ Widerstand verringelt hat. Das wird dann zu einer geringen Relaxationszeit führen, was wir hier tatsächlich beobachtet haben. 
 
 	Wenn man noch Zusatzexperimente machen kann, kann man den Widerstand von Tastkopf charakterisieren, um zu wissen, ob die gemessene Daten mit der Theorie übereinstimmt. 

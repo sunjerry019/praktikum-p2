@@ -1,0 +1,212 @@
+\documentclass[twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{libertine}
+\usepackage[a4paper]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pdfpages}
+\usepackage{parskip}
+\usepackage{amsmath, amsthm, amssymb, commath, mathtools}
+\usepackage{cancel}
+\usepackage{physics}
+\usepackage{nicefrac}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tabu}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\graphicspath{{./plots/}{./images/},{./pics/}}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{minted}
+\usepackage{appendix}
+\usepackage{icomma}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{footmisc}
+\usepackage[separate-uncertainty=true]{siunitx}
+\sisetup{locale = DE}
+\usepackage{circledsteps}
+\usepackage{transparent}
+
+\usepackage{csquotes}
+\MakeOuterQuote{"}
+\renewcommand{\ttdefault}{cmtt}
+
+\usepackage[colorlinks]{hyperref}
+\usepackage{attachfile} % because it loads hyperref also
+\usepackage{bookmark}
+% https://tex.stackexchange.com/a/33701
+\makeatletter
+    \newcommand{\nonum}[0]{%
+        \let\@oldseccntformat\@seccntformat %
+        \renewcommand\@seccntformat[1]{}%
+        }
+    \newcommand{\resnum}[0]{\let\@seccntformat\@oldseccntformat}
+\makeatother
+
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+
+\newcommand{\versuch}[0]{VIR@Home}
+\newcommand{\versuchLang}[0]{Viskosität und Reynoldszahl}
+
+\hypersetup{
+	pdftitle={P2 -- \versuch{} Laborbericht},
+	pdfauthor={Yudong Sun},
+	bookmarksnumbered=true,
+	bookmarksopen=true,
+	bookmarksopenlevel=2,
+	pdfstartview=FitH,
+    pdfpagelayout=TwoColumnRight,
+	pdfpagemode=UseOutlines,
+	colorlinks=true,
+	linkcolor=MidnightBlue,
+	filecolor=magenta, 
+	urlcolor=blue
+}
+\urlstyle{same}
+
+\title{\versuch{} -- \versuchLang \\ Laborbericht}
+\author{Yudong Sun\\Gruppe F2-2}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\subsectionmark}[1]{}
+% https://tex.stackexchange.com/a/222371
+\fancyhf{}
+\fancyhead[LO]{Yudong Sun}
+\fancyhead[RO]{\versuch~-- \nouppercase{\rightmark}}
+\fancyhead[RE]{Yudong Sun}
+\fancyhead[LE]{\nouppercase{\rightmark}~-- \versuch}
+\cfoot{\thepage}
+
+% Custom Defs
+\newcommand*{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\newcommand*{\maxi}[1]{\text{max}\left(#1\right)}
+\newcommand*{\mini}[1]{\text{min}\left(#1\right)}
+\newcommand*{\todo}[1]{\textcolor{red}{TODO: #1}}
+\newcommand*{\iu}[1]{\textit{\underline{#1}}}
+\newcommand*{\gnuplot}[0]{\texttt{gnuplot}}
+\newcommand*{\tracker}[0]{\texttt{osp-tracker}}
+\newcommand*{\captionbr}[0]{\\\rule{\textwidth}{0pt}\\\vspace{-\baselineskip}}
+\newcommand*{\sigfig}[1]{\hspace{0.5cm}\text{(#1 sig. Zif.)}}
+\newcommand*{\pbrace}[1]{\left(#1\right)}
+\newcommand*{\sbrace}[1]{\left[#1\right]}
+\newcommand*{\bDelta}[1]{\pbrace{\Delta #1}}
+\newcommand*{\overbar}[1]{\overline{\raisebox{0pt}[1.2\height]{$#1$}}} % https://tex.stackexchange.com/a/87615
+
+\newcommand\invisiblesection[1]{%
+  \refstepcounter{section}%
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+  \sectionmark{#1}}
+% https://tex.stackexchange.com/a/68296
+
+% \addto\captionsngerman{
+%     \let\oldfigname\figurename
+%     \renewcommand{\figurename}{[\oldfigname}
+%     \let\oldthefig\thefigure
+%     \renewcommand{\thefigure}{\oldthefig]}
+% } % https://tex.stackexchange.com/a/17490
+% https://tex.stackexchange.com/a/101624 new line in caption
+
+% Gaußsche Fehler Erzeuger
+\makeatletter
+    \newcommand{\gausserror}[2]{% \gausserror{G}{faktoren}
+        \sqrt{%
+            \@tempswafalse
+            \@for\factor:=#2
+            \do{
+                \if@tempswa+%
+                \else%
+                    \@tempswatrue%
+                \fi%
+                \left(\pdv{#1}{\factor}\Delta\factor\right)^2%
+            }%
+        }
+    }
+\makeatother
+% https://tex.stackexchange.com/a/59912
+% https://riptutorial.com/latex/example/28657/loops---repeating-things
+
+% Add quad
+\makeatletter
+    \newcommand{\addquad}[1]{% \gausserror{G}{faktoren}
+        \sqrt{%
+            \@tempswafalse
+            \@for\factor:=#1
+            \do{
+                \if@tempswa+%
+                \else%
+                    \@tempswatrue%
+                \fi%
+                \left(\Delta\factor\right)^2%
+            }%
+        }
+    }
+\makeatother
+
+% Add quad
+\makeatletter
+    \newcommand{\addquadpure}[1]{% \gausserror{G}{faktoren}
+        \sqrt{%
+            \@tempswafalse
+            \@for\factor:=#1
+            \do{
+                \if@tempswa+%
+                \else%
+                    \@tempswatrue%
+                \fi%
+                \left(\factor\right)^2%
+            }%
+        }
+    }
+\makeatother
+
+% rej quad
+\makeatletter
+    \newcommand{\relquad}[1]{% \gausserror{G}{faktoren}
+        \sqrt{%
+            \@tempswafalse
+            \@for\factor:=#1
+            \do{
+                \if@tempswa+%
+                \else%
+                    \@tempswatrue%
+                \fi%
+                \left(\frac{\Delta\factor}{\factor}\right)^2%
+            }%
+        }
+    }
+\makeatother
+
+% / Custom Defs
+
+\begin{document}
+
+\includepdf{Deckblatt.pdf}
+
+\maketitle
+
+% Einstellungen
+\nonum
+\numberwithin{equation}{subsection}
+% / Einstellungen
+
+\input{0_introduction.tex}
+\tableofcontents
+\input{1_vorbereitung.tex}
+\input{2_expmethods.tex}
+
+\newpage
+\section{Messwerten und Auswertung}
+    \input{3_tv1.tex}
+    \input{3_tv2.tex}
+
+\resnum
+\newpage
+\appendix
+\input{0_appendices.tex}
+\end{document}

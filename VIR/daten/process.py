@@ -2,5 +2,6 @@
 
 import os
 
-folder = "data_warm"
+folder = ["data_warm"]
 
+dias = os.path.join(folder, "dia.dat")

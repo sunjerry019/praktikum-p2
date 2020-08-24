@@ -2,7 +2,7 @@
 
 # Version >= 5.2
 
-set term epslatex color size 29.7cm,21cm
+set term epslatex color size 12in, 8in
 set output "tv1-plot-warm.tex"
 # set term epscairo color size 29.7cm,21cm
 # set output "tv1-plot-warm.eps"
@@ -45,7 +45,7 @@ do for [t=1:10] {
 
 set key top left Left spacing 1.3
 
-plot for [i=1:10] input_mp[i] u 1:($2 * 1000) title titel_mp[i] pointtype 0 lc i, for [i=1:10] A_m[i]*x+A_c[i] title titel[i] lc i
+plot for [i=1:10] input_mp[i] u 1:($2 * 1000) title titel_mp[i] pointtype 77 lc i, for [i=1:10] A_m[i]*x+A_c[i] title titel[i] lc i
 
 print A_m
 print A_m_err

@@ -1,11 +1,8 @@
 #!/usr/bin/env gnuplot
-
 # Version >= 5.2
 
-set term epslatex color size 12in, 8in
+set term epslatex color size 7in, 4in
 set output "tv1-plot-warm.tex"
-# set term epscairo color size 29.7cm,21cm
-# set output "tv1-plot-warm.eps"
 set decimalsign ","
 
 set title "Aufstiegsverlauf der Blasen (Warm)"
@@ -43,18 +40,25 @@ do for [t=1:10] {
 	titel[t] = "$".gprintf("%.5f", m)."t + (".gprintf("%.5f", c).")$"
 }
 
-set key top left Left spacing 1.3
+set key right vertical maxrows 10 width -8
 
 plot for [i=1:10] input_mp[i] u 1:($2 * 1000) title titel_mp[i] pointtype 77 lc i, for [i=1:10] A_m[i]*x+A_c[i] title titel[i] lc i
 
+# Raw data output
 print A_m
 print A_m_err
 
 # LaTeX table output
 print "\\toprule"
-print "\\Blase Nr. & $m/\\si{\\milli\\meter\\per\\second}$ & $c/\\si{\\milli\\meter}$ & $\\Chi^2_\\text{red}$ \\\\"
+print "Blase Nr. & $m/\\si{\\milli\\meter\\per\\second}$ & $c/\\si{\\milli\\meter}$ & $\\chi^2_\\text{red}$ \\\\"
 print "\\midrule"
 do for [t=1:10] {
 	print "\t$".t."$ & \\num{".gprintf("%.5f", A_m[t])."(".gprintf("%.0f", A_m_err[t]*10**5).")} & \\num{".gprintf("%.5f", A_c[t])."(".gprintf("%.0f", A_c_err[t]*10**5).")}"." & \\num{".gprintf("%.5f", chisq[t])."} \\\\"
 }
 print "\\bottomrule"
+
+# Raw data output in table form
+print "# Nr\tm/mm \tm_err/mm"
+do for [t=1:10] {
+	print "".t."\t".sprintf("%.10f", A_m[t])."\t".sprintf("%.10f", A_m_err[t])
+}

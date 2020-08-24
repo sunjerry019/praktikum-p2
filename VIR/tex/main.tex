@@ -15,7 +15,14 @@
 \usepackage{tabu}
 \usepackage{enumitem}
 \usepackage{graphicx}
-\graphicspath{{./plots/}{./images/},{./pics/}}
+\graphicspath{
+    {./plots/},
+    {./images/},
+    {./pics/},
+    {./plots/data-warm/},
+    {./plots/data-cold/},
+    {./plots/data-balls/}
+}
 \usepackage{wrapfig}
 \usepackage{caption}
 \usepackage{float}
@@ -90,7 +97,7 @@
 \newcommand*{\todo}[1]{\textcolor{red}{TODO: #1}}
 \newcommand*{\iu}[1]{\textit{\underline{#1}}}
 \newcommand*{\gnuplot}[0]{\texttt{gnuplot}}
-\newcommand*{\tracker}[0]{\texttt{osp-tracker}}
+\newcommand*{\tracker}[0]{\texttt{osp\--tracker}}
 \newcommand*{\captionbr}[0]{\\\rule{\textwidth}{0pt}\\\vspace{-\baselineskip}}
 \newcommand*{\sigfig}[1]{\hspace{0.5cm}\text{(#1 sig. Zif.)}}
 \newcommand*{\pbrace}[1]{\left(#1\right)}

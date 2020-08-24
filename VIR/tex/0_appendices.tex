@@ -1,2 +1,11 @@
-\section{\gnuplot{} Quellcode zur Auswertung von Teilversuch 2}
-    
+\section{Quellcode zur Auswertung von Teilversuch 1}
+    \label{appdx:tvone}
+
+    \gnuplot{} Quellcode für warmes Spülmittel
+    {  
+        % % Surpress "errors" in minted
+        % https://tex.stackexchange.com/a/289068
+        \renewcommand{\fcolorbox}[4][]{#4}
+        \inputminted[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{gnuplot}{./plots/data-warm/process.gp}
+    }
+    \textattachfile[author={Yudong Sun},color={0 0.404 0.584},description={.zip Datei mit der Messwerten},mimetype={application/zip},timezone={+02'00'}]{./attachments/luftblasen-warm.zip}{Die Daten stehen als Anhang dieses PDF-Dokuments zur Verfügung.}}

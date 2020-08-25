@@ -1,5 +1,7 @@
-\section{Quellcode zur Auswertung von Teilversuch 1}
+\section{Quellcode zur Auswertung von Aufsteig von Luftblasen}
     \label{appdx:tvone}
+
+    \textattachfile[author={Yudong Sun},color={0 0.404 0.584},description={.ods Datei mit der Messwerten und Auswertungen},mimetype={application/vnd.oasis.opendocument.spreadsheet},timezone={+02'00'}]{./attachments/tv1.ods}{Die genaue Auswertung im LibreOffice Calc finden Sie in diesem Anhang}.
 
     \subsection{\gnuplot{} Quellcode für warmes Spülmittel}
     \label{appdx:tvone-warm}
@@ -9,7 +11,7 @@
         \renewcommand{\fcolorbox}[4][]{#4}
         \inputminted[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{gnuplot}{./plots/data-warm/process.gp}
     }
-    \textattachfile[author={Yudong Sun},color={0 0.404 0.584},description={.zip Datei mit der Messwerten},mimetype={application/zip},timezone={+02'00'}]{./attachments/luftblasen-warm.zip}{Die Daten stehen als Anhang dieses PDF-Dokuments zur Verfügung.}}
+    \textattachfile[author={Yudong Sun},color={0 0.404 0.584},description={.zip Datei mit der Messwerten},mimetype={application/zip},timezone={+02'00'}]{./attachments/luftblasen-warm.zip}{Die Daten stehen als Anhang dieses PDF-Dokuments zur Verfügung.}
 
     \subsection{\gnuplot{} Quellcode für kaltes Spülmittel}
     \label{appdx:tvone-cold}
@@ -19,4 +21,16 @@
         \renewcommand{\fcolorbox}[4][]{#4}
         \inputminted[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{gnuplot}{./plots/data-cold/process.gp}
     }
-    \textattachfile[author={Yudong Sun},color={0 0.404 0.584},description={.zip Datei mit der Messwerten},mimetype={application/zip},timezone={+02'00'}]{./attachments/luftblasen-kalt.zip}{Die Daten stehen als Anhang dieses PDF-Dokuments zur Verfügung.}}
+    \textattachfile[author={Yudong Sun},color={0 0.404 0.584},description={.zip Datei mit der Messwerten},mimetype={application/zip},timezone={+02'00'}]{./attachments/luftblasen-kalt.zip}{Die Daten stehen als Anhang dieses PDF-Dokuments zur Verfügung.}
+
+\section{Quellcode zur Auswertung von Kugelfallviskosimeter}
+    \label{appdx:tvtwo}
+    {  
+        % % Surpress "errors" in minted
+        % https://tex.stackexchange.com/a/289068
+        \renewcommand{\fcolorbox}[4][]{#4}
+        \inputminted[linenos,breaklines,autogobble,frame=leftline,framesep=10pt]{gnuplot}{./plots/data-balls/process.gp}
+    }
+    \textattachfile[author={Yudong Sun},color={0 0.404 0.584},description={.zip Datei mit der Messwerten},mimetype={application/zip},timezone={+02'00'}]{./attachments/kugelfallviskosimeter.zip}{Die Daten stehen als Anhang dieses PDF-Dokuments zur Verfügung.}
+
+    \textattachfile[author={Yudong Sun},color={0 0.404 0.584},description={.ods Datei mit der Messwerten und Auswertungen},mimetype={application/vnd.oasis.opendocument.spreadsheet},timezone={+02'00'}]{./attachments/tv2.ods}{Die genaue Auswertung im LibreOffice Calc finden Sie in diesem Anhang}.

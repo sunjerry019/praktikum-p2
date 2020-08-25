@@ -1,5 +1,3 @@
-\newcommand{\spuli}{\text{spüli}}
-\newcommand{\wasser}{\text{wasser}}
 \subsection{Aufstieg von Luftblasen}
 	\subsubsection{Dichte des Spülmittels}
 		Nach dem Archimedischen Prinzip ist die Auftriebskraft, die die Flasche ins Wasser hält, gleich die Gewicht des verdrängten Wasser. Somit gilt:
@@ -50,7 +48,7 @@
 		\end{align}
 		Folglich haben wir eine Dichte von $\rho_\spuli = \SI{1080(60)}{\kilo\gram\per\meter\cubed} = \SI{1.08(6)}{\gram\per\centi\meter\cubed}$.
 		\newpage
-		Im Vergleich zum Literaturwert\footnote{\url{daten.oehme-lorito.de/sdb/frosch\%20geschirrsp\%C3\%BClmittel\%20limonen.pdf}} haben wir:
+		Im Vergleich zum Literaturwert\footnote{\url{daten.oehme-lorito.de/sdb/frosch\%20geschirrsp\%C3\%BClmittel\%20limonen.pdf}, Seite 6} haben wir:
 		\begin{center}
 			\begin{tabular}{lrr}
 				\toprule
@@ -90,13 +88,13 @@
 
 		Die erhaltene Zeit-Position Daten aus \tracker{} sind mit \gnuplot{} geplottet und es wurde eine Kurveanpassung zur $y = mt + c~$ für jede Blase durchgeführt. Da \tracker{} keine explizite Unsicherheit ermittelt, vernachlässigen wir sie für die Kurvenanpassung.
 
-		Für das genaue \gnuplot{} Code, siehe Appendix \ref{appdx:tvone}. 
+		Für das genaue \gnuplot{} Code, siehe Appendix \ref{appdx:tvone-warm}. 
 		% https://tex.stackexchange.com/a/98142
 		\begin{figure}[H]
 			\centering
 			\captionsetup{width=0.8\textwidth, justification=centering}
 			\resizebox{\linewidth}{!}{\input{plots/data-warm/tv1-plot-warm.tex}}
-			\caption{Aufstieg der Luftblasen \textattachfile[author={Yudong Sun},color={0 0.404 0.584},description={.zip Datei mit der Messwerten},mimetype={application/zip},timezone={+02'00'}]{./attachments/luftblasen-warm.zip}{\textit{(Daten)}}}
+			\caption{Aufstieg der Luftblasen im warmen Spülmittel \textattachfile[author={Yudong Sun},color={0 0.404 0.584},description={.zip Datei mit der Messwerten},mimetype={application/zip},timezone={+02'00'}]{./attachments/luftblasen-warm.zip}{\textit{(Daten)}}}
 			\vspace{-1em}
 		\end{figure}
 		Als Endergebnis erhalten wir:
@@ -168,16 +166,180 @@
 				\bottomrule
 			\end{tabular}
 		\end{center}
-		wobei $\Delta\overline{\eta}$ und $s(\eta)$ beides aufgerundet sind. 
+		wobei $\Delta\overline{\eta}$ und $s(\eta)$ beides auf 2 signifikanten Ziffern aufgerundet sind. 
 
 		Da die Standardabweichung größer als die Unsicherheit des Mittelwertes ist, nehmen wir die Standardabweichung als Fehler und erhalten für $T = \SI{29(1)}{\celsius}$ eine Viskosität von $\eta = \SI{256(28)}{\milli\pascal\second}$.
 
+	\newpage
 	\subsubsection{Viskosität des kalten Spülmittels}
 		Wir wiederholen nun alle Rechnungen für das kalte Spülmittel. Sodass die Variablen nicht durcheinander kommen, sind die Auswertung zum kalten Spülmittel hier im zweiten Abschnitt geteilt. 
 
 		Es ist davon ausgegangen, dass die Dichte des Spülmittels nicht Temperaturabhängig ist.
 
-		
-		
+		\iu{Messung der Durchmesser}
+
+		Im Allgemein sind die Durchmesser für das kalte Spülmittel größer, da es schwieriger war, eine Blase im Spülmittel zu pusten.
+		\begin{center}
+			\begin{tabular}{l*{6}{r}}
+				\toprule
+				Blase & $2r_1/\si{\milli\meter}$ & $2r_2/\si{\milli\meter}$ & $2r_3/\si{\milli\meter}$ & $2r_4/\si{\milli\meter}$ & $2r_5/\si{\milli\meter}$ & $\overline{(2r)}/\si{\milli\meter}$ \\
+				\midrule
+				\num{1} & \num{8.164} & \num{8.244} & \num{8.149} & \num{8.256} & \num{8.284} & \num{8.23(6)} \\
+				\num{2} & \num{8.082} & \num{8.039} & \num{8.067} & \num{8.107} & \num{7.993} & \num{8.05(5)} \\
+				\num{3} & \num{11.80} & \num{12.01} & \num{12.11} & \num{11.54} & \num{11.99} & \num{11.91(26)} \\
+				\num{4} & \num{13.50} & \num{13.46} & \num{13.70} & \num{14.09} & \num{13.66} & \num{13.73(27)} \\
+				\num{5} & \num{8.508} & \num{8.550} & \num{8.663} & \num{8.466} & \num{8.497} & \num{8.54(9)} \\
+				\num{6} & \num{9.846} & \num{9.806} & \num{9.702} & \num{9.746} & \num{9.798} & \num{9.76(5)} \\
+				\num{7} & \num{10.74} & \num{10.90} & \num{10.76} & \num{10.94} & \num{10.82} & \num{10.86(9)} \\
+				\num{8} & \num{8.979} & \num{8.913} & \num{9.058} & \num{8.873} & \num{8.892} & \num{8.93(9)} \\
+				\num{9} & \num{9.062} & \num{9.031} & \num{8.886} & \num{9.133} & \num{9.042} & \num{9.02(11)} \\
+				\num{10} & \num{8.966} & \num{9.070} & \num{9.082} & \num{9.053} & \num{9.173} & \num{9.09(6)} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		\iu{Geschwindigkeit mittels \gnuplot{}}
+
+		Für das genaue \gnuplot{} Code, siehe Appendix \ref{appdx:tvone-cold}. 
+		% https://tex.stackexchange.com/a/98142
+		\begin{figure}[H]
+			\centering
+			\captionsetup{width=0.8\textwidth, justification=centering}
+			\resizebox{\linewidth}{!}{\input{plots/data-cold/tv1-plot-cold.tex}}
+			\caption{Aufstieg der Luftblasen im kalten Spülmittel \textattachfile[author={Yudong Sun},color={0 0.404 0.584},description={.zip Datei mit der Messwerten},mimetype={application/zip},timezone={+02'00'}]{./attachments/luftblasen-kalt.zip}{\textit{(Daten)}}}
+			\vspace{-1em}
+		\end{figure}
+		\newpage
+		Als Endergebnis erhalten wir:
+		\begin{center}
+			\begin{tabular}{lrrr}
+				\toprule
+				Blase Nr. & $m/\si{\milli\meter\per\second}$ & $c/\si{\milli\meter}$ & $\chi^2_\text{red}$ \\
+				\midrule
+					$1$ & \num{8,15080(813)} & \num{0,34556(3560)} & \num{0,14495} \\
+					$2$ & \num{10,12025(686)} & \num{-0,18451(1777)} & \num{0,02144} \\
+					$3$ & \num{34,33273(4927)} & \num{-0,96333(6602)} & \num{0,15418} \\
+					$4$ & \num{38,91436(6953)} & \num{-1,19706(10923)} & \num{0,49363} \\
+					$5$ & \num{16,38475(854)} & \num{-0,93825(3701)} & \num{0,15491} \\
+					$6$ & \num{25,41788(3870)} & \num{0,96616(8091)} & \num{0,35920} \\
+					$7$ & \num{33,10418(2057)} & \num{-0,07643(3528)} & \num{0,05617} \\
+					$8$ & \num{15,00664(1969)} & \num{-1,06078(6068)} & \num{0,29691} \\
+					$9$ & \num{18,90101(1844)} & \num{0,01798(4973)} & \num{0,17465} \\
+					$10$ & \num{18,54460(1597)} & \num{-0,69004(4676)} & \num{0,16751} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		Aus der niedrigen $\chi^2_\text{red}$ sind alle Kurveanpassungen gut. 
+
+		\iu{Viskosität mittels LibreOffice Calc}
+
+		Wir berechnen nun die Viskosität $\eta$ mittels \eqref{eqn:warm-eta} und \eqref{eqn:warm-delta-eta} in LibreOffice Calc:
+		\begin{center}
+			\begin{tabular}{lrrr}
+				\toprule
+				Blase Nr. $i$ & $2r_i/\si{\milli\meter}$ & $v_i/\si{\milli\meter\per\second}$ & $\eta_i/\si{\milli\pascal\second}$ \\
+				\midrule
+				\num{1} & \num{8.23(6)} & \num{8.151(9)} & \num{4890(290)} \\
+				\num{2} & \num{8.05(5)} & \num{10.12(7)} & \num{3770(220)} \\
+				\num{3} & \num{11.91(26)} & \num{34.33(5)} & \num{2430(180)} \\
+				\num{4} & \num{13.73(27)} & \num{38.91(7)} & \num{2850(200)} \\
+				\num{5} & \num{8.54(9)} & \num{16.385(9)} & \num{2620(160)} \\
+				\num{6} & \num{9.76(5)} & \num{25.42(4)} & \num{2210(130)} \\
+				\num{7} & \num{10.86(9)} & \num{33.104(21)} & \num{2100(130)} \\
+				\num{8} & \num{8.93(9)} & \num{15.01(20)} & \num{3130(190)} \\
+				\num{9} & \num{9.02(11)} & \num{18.901(19)} & \num{2530(160)} \\
+				\num{10} & \num{9.09(6)} & \num{18.545(16)} & \num{2620(150)} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		und den Mittelwert, die Unsicherheit des Mittelwertes (mittels Gleichung \eqref{eqn:avg-eta-warm}) und die Standardabweichung (mittels Gleichung \eqref{eqn:stdev-eta-warm}) in LibreOffice Calc:
+		\begin{center}
+			\begin{tabular}{lrr}
+				\toprule
+				Mittelwert & $\overline{\eta}$ & \SI{2915}{\milli\pascal\second}\\
+				Unsicherheit des Mittelwertes & $\Delta\overline{\eta}$ & \SI{60}{\milli\pascal\second}\\
+				Standardabweichung & $s(\eta)$ & \SI{850}{\milli\pascal\second}\\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		wobei $\Delta\overline{\eta}$ und $s(\eta)$ beides auf 2 signifikanten Ziffern aufgerundet sind. 
+
+		Da die Standardabweichung größer als die Unsicherheit des Mittelwertes ist, nehmen wir die Standardabweichung als Fehler. Da das Spülmittel am Anfang und am Ende unterschiedliche Temperaturen hat, berechnen wir nun den Mittelwert:
+		\begin{align}
+			T' &= \frac{\SI{4}{\celsius} + \SI{12}{\celsius}}{2} = \SI{8}{\celsius} \\
+			\Delta T' &= \frac{1}{2} \addquadpure{\SI{1}{\celsius}, \SI{1}{\celsius}} = \SI{0.8}{\celsius}
+		\end{align}
+
+		 und erhalten für $T' = \SI{8.0(8)}{\celsius}$ eine Viskosität von $\eta = \SI{2900(900)}{\milli\pascal\second}$.
+
 	\subsubsection{Diskussion}
-		biggest error = dichte
+		Zusammengefasst mit der Herstellerangabe zur Viskosität\footnote{\url{daten.oehme-lorito.de/sdb/frosch\%20geschirrsp\%C3\%BClmittel\%20limonen.pdf}, Seite 6} haben wir:
+		\begin{center}
+			\begin{tabular}{lrr}
+				\toprule
+				Quelle & Temperature$/\si{\celsius}$ & Viskosität$/\si{\milli\pascal\second}$ \\
+				\midrule
+				Experiment & \num{29(1)} & \num{256(28)} \\
+				Experiment & \num{8.0(8)} & \num{2900(900)} \\
+				Hersteller & ca. \num{20} & \num{1000} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		Da die Fehler ziemlich groß war (11\% beim Warmen, 31\% beim Kalten), ist es nicht sehr aussagekräftig im dreifachen Fehlerintervall zu vergleichen. Wir vergleichen somit immer nur im einfachen Fehlerintervall der Werten. Die Fehler könnten kleiner sein, wenn wir statt der Standardabweichung, der Fehler der Steigung zur optimalen Gerade der folgenden Gleichung verwenden:
+		\begin{equation}
+			r^2_\text{Luftblase} = \left(\frac{2}{9g}\cdot \frac{\eta_\spuli}{\rho_\spuli}\right)v_\text{Luftblase} + c
+		\end{equation}
+		$\displaystyle \frac{\eta_\spuli}{\rho_\spuli}$ ist dabei die kinematische Viskosität.
+
+		$c$ ist nur da, sodass die Kurveanpassung möglichst allgemein ist. Es soll eigentlich $0$ sein. 
+
+		Die Viskosität des kalten Spülmittels ist deutlich größer als die Viskosität des warmen Spülmittels, was auch erwartet ist. Bei niedriger Temperaturen haben die Moleküle weniger kinetische Energie, somit brauchen die Moleküle mehr äußere Energie, um die elektrischen Kräfte zwischen benachbarten Teilchen zu überwinden.
+
+		Die Viskosität des warmen Spülmittels stimmt aber nicht mit der Herstellerangabe überein. Dabei ist der experimentelle Wert kleiner als der Literaturwert. Es ist aber zu bemerken, dass die Temperatur beim Experiment auch deutlich höher als die Temperatur im Literatur. Ob es tatsächlich einen Fehler im Experiment gibt oder es einfach der Temperaturverlauf der Viskosität zurückzuführen ist, kann man ohne Zusatzexperiment schwer schlussfolgern. 
+
+		Die Messung, die am stärksten zur Unsicherheit des Ergebnisses beiträgt, ist die Messung der Dichte des Spülmittels, da der prozentuale Fehler am größten ist. Ein systematische Fehler bei der Bestimmung ist die mögliche Verzerrung, die aus dem Objektiv und Winkel des Kameras entsteht. Bei verschiedenen Objektiven kann Längen unterschiedlich lang sein. Diese Verzerrung muss man durch die genaue Charakterisierung des Objektiv bestimmen, was hier aus zeitliche Gründen nicht gemacht war. 
+
+		Die Reynoldszahl ist gegeben durch:
+		\begin{align}
+			R_e &= \frac{v\cdot 2r \cdot \rho_\spuli}{\eta_\spuli} \\
+			\Delta R_e &= R_e \relquad{v, (2r), \rho_\spuli, \eta_\spuli}
+		\end{align}
+		Wir berechnen nun alle Reynoldszahlen mit Hilfe von LibreOffice Calc und nehmen an, dass die Dichte des Spülmittel nicht Temperaturabhängig ist. 
+		\newpage
+		Aus LibreOffice Calc gilt:
+		\begin{center}
+			\begin{tabular}{lrrrr}
+				Warm \\
+				\toprule
+				Blase Nr. $i$ & $2r_i/\si{\milli\meter}$ & $v_i/\si{\milli\meter\per\second}$ & $\eta_i/\si{\milli\pascal\second}$ & $R_e$\\
+				\midrule
+				\num{1} & \num{2.84(7)} & \num{18.759(17)} & \num{253(19)} & \num{0.227(22)} \\
+				\num{2} & \num{2.633(27)} & \num{14.881(4)} & \num{274(17)} & \num{0.154(13)} \\
+				\num{3} & \num{3.04(6)} & \num{23.809(11)} & \num{228(16)} & \num{0.34(4)} \\
+				\num{4} & \num{2.64(12)} & \num{14.788(8)} & \num{280(30)} & \num{0.152(20)} \\
+				\num{5} & \num{3.49(6)} & \num{28.05(4)} & \num{256(17)} & \num{0.41(4)} \\
+				\num{6} & \num{3.56(5)} & \num{35.18(2)} & \num{212(14)} & \num{0.64(6)} \\
+				\num{7} & \num{7.11(26)} & \num{99.39(15)} & \num{299(28)} & \num{2.5(3)} \\
+				\num{8} & \num{5.57(18)} & \num{67.19(9)} & \num{272(24)} & \num{1.49(17)} \\
+				\num{9} & \num{2.75(12)} & \num{17.521(5)} & \num{254(27)} & \num{0.205(27)} \\
+				\num{10} & \num{3.74(9)} & \num{36.195(9)} & \num{227(17)} & \num{0.64(7)} \\
+				\bottomrule
+				\\
+				Kalt \\
+				\toprule
+				Blase Nr. $i$ & $2r_i/\si{\milli\meter}$ & $v_i/\si{\milli\meter\per\second}$ & $\eta_i/\si{\milli\pascal\second}$ & $R_e$\\
+				\midrule
+				\num{1} & \num{8.23(6)} & \num{8.151(9)} & \num{4890(290)} & \num{0.0148(13)} \\
+				\num{2} & \num{8.05(5)} & \num{10.12(7)} & \num{3770(220)} & \num{0.0233(19)} \\
+				\num{3} & \num{11.91(26)} & \num{34.33(5)} & \num{2430(180)} & \num{0.182(18)} \\
+				\num{4} & \num{13.73(27)} & \num{38.91(7)} & \num{2850(200)} & \num{0.202(19)} \\
+				\num{5} & \num{8.54(9)} & \num{16.385(9)} & \num{2620(160)} & \num{0.058(5)} \\
+				\num{6} & \num{9.76(5)} & \num{25.42(4)} & \num{2210(130)} & \num{0.121(10)} \\
+				\num{7} & \num{10.86(9)} & \num{33.104(21)} & \num{2100(130)} & \num{0.185(16)} \\
+				\num{8} & \num{8.93(9)} & \num{15.01(20)} & \num{3130(190)} & \num{0.046(4)} \\
+				\num{9} & \num{9.02(11)} & \num{18.901(19)} & \num{2530(160)} & \num{0.073(7)} \\
+				\num{10} & \num{9.09(6)} & \num{18.545(16)} & \num{2620(150)} & \num{0.069(6)} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		Da alle Reynoldzahlen kleiner als $2000$ ist, ist die Strömung wirklich laminar. 
+			
